@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //problem 1
+    //splice()
+    var array=[0,1,2,3,4,5];
+    array.splice(1,0,9);
+    console.log(array);
+    //expected output   [0,9,1,2,3,4,5]
+    //comment: from above example we can clearly see that splice() method is mutuable .
+    //Mutable: It is type of variable that can be changed.Mutable object is object whose state can be modified after it is created. 
+    // here splice() change the value of array content therefore it is mutable. 
+
+
+    //slice()
+    var arr=[0,1,2,3,4,5,6,7,8];
+    console.log(arr.slice(2)) //expected output: [2,3,4,5,6,7,8]
+    console.log(arr.slice(2,4)) //expected output: [2,3]
+    console.log(arr.slice(-2)) //expected output: [7,8]
+    console.log(arr.slice(2,-1)) //expected output: [2,3,4,5,6,7]
+
+    //commment:from above example we can clearly se that slice() method is immutable because it create new array without changing the value of main array.
+    //Immutable: It is type of variable that can not be changed.Immutable object is object whose state can not be modified after it is created.
+    // here slice() does not change the value of array content therefore it is Immutable.   
+
+
+    //problem:2
+
+    //Object.freeze()
+    var arr2=[3,4,5,6];
+    Object.freeze(arr2);
+    arr2[0]=9;
+    console.log(arr2)   //expected output  [3,4,5,6]
+
+    var arr2=[1,2,3,4];
+    console.log(arr2)    //expected output  [1,2,3,4]
+
+    //comment:The Object.freeze() method freezes an object. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing of existing properties, and prevents the values of existing properties from being changed. 
+    //In simple words: Object.freeze() method freezes-change, and allows-reassinging.
+
+    //const
+
+    const arr3=[3,4,5,6];
+    arr3[1]=8
+    console.log(arr3) //expected output  [3,8,5,6]
+
+    const arr1=[3,4,5,6];
+    arr1=[1,2,3,4];
+    console.log(arr1)   //expected output  typeError:Assignment to constant variable.
+
+   //comment:The value of constant can not be changed during reassignment.However, const in object or array, its properties or items can be updated or removed.
+   
+   
+
+</script>

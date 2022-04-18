@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(230, 247, 156);
+        }
+        #div1{
+            display: flex;
+            justify-content: center;
+            padding-top: 250px;
+        }
+        button{
+            padding:15px;
+            margin:10px;
+            border-radius: 5px;
+            color:rgb(27, 12, 12);
+            background-color: rgb(125, 223, 240);
+            border:3px solid gray;
+            font-weight: bold;
+            font-size: large;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        }
+        #div2{
+            width: 40%;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            border:3px solid rgb(140, 143, 138);
+            margin-left: 30%;
+            background-color: black;
+            color: white;
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        }
+        #para1{
+         margin-left: 00px;
+        }
+    </style>
+</head>
+<body>
+ <div id="div1"><button onclick="Objects()">Objects</button>
+    <button onclick="Arrays()">Arrays</button>
+    <button onclick="Functions()">Functions</button>
+    <button onclick="Strings()">Strings</button>
+    <button onclick="Numbers()">Numbers</button>
+    <button onclick="null1()"> Null</button>
+    <button onclick="undefine()">Undefined</button></div>  
+    <br>
+    <div id="div2"></div>
+</body>
+</html>
+<script>
+      
+
+     function Objects()
+     {
+
+         document.querySelector("#div2").innerHTML=""
+         var p1=document.createElement("p");
+         var p2=document.createElement("p");
+         var p3=document.createElement("p");
+         var p4=document.createElement("p");
+         var p5=document.createElement("p");
+         p1.textContent="1.An object is an unique key value pairs & mutable";
+         p2.textContent="2.Objects can be created using the Object() constructor or the object initializer";
+         p3.textContent="3.The Object class represents one of JavaScript's data types..";
+         p4.textContent="4.If the value is null or undefined, it will create and return an empty object.";
+         p5.textContent="5.If the value is an object already, it will return the value.";
+         document.querySelector("#div2").append(p1,p2,p3,p4,p5)
+
+     }
+     function Arrays()
+     {
+        document.querySelector("#div2").innerHTML=""
+         var p1=document.createElement("p");
+         var p2=document.createElement("p");
+         var p3=document.createElement("p");
+         var p4=document.createElement("p");
+         var p5=document.createElement("p");
+         p1.textContent="1.The JavaScript Array class is a global object & non-primitive data type";
+         p2.textContent="2.Arrays are list-like objects whose prototype has methods to perform traversal and mutation operations";
+         p3.textContent="3.Neither the length of a JavaScript array nor the types of its elements are fixed.";
+         p4.textContent="4.Arrays cannot use strings as element indexes";
+         p5.textContent="5.used in the construction of arrays; which are high-level, list-like objects.";
+         document.querySelector("#div2").append(p1,p2,p3,p4,p5)
+     }
+
+     function Functions()
+     {
+
+         document.querySelector("#div2").innerHTML=""
+         var p1=document.createElement("p");
+         var p2=document.createElement("p");
+         var p3=document.createElement("p");
+         var p4=document.createElement("p");
+         var p5=document.createElement("p");
+         p1.textContent="1.Functions are one of the fundamental building blocks in JavaScript.It is non primitive data type";
+         p2.textContent="2.To use a function, you must define it somewhere in the scope from which you wish to call it.";
+         p3.textContent="3.The JavaScript statements that define the function, enclosed in curly brackets, {...}.";
+         p4.textContent="4.A method is a function that is a property of an object.";
+         p5.textContent="5.Functions must be in scope when they are called, but the function declaration can be hoisted";
+         document.querySelector("#div2").append(p1,p2,p3,p4,p5)
+
+     }
+     function Strings()
+     {
+        document.querySelector("#div2").innerHTML=""
+         var p1=document.createElement("p");
+         var p2=document.createElement("p");
+         var p3=document.createElement("p");
+         var p4=document.createElement("p");
+         var p5=document.createElement("p");
+         p1.textContent="1.The String object is used to represent and manipulate a sequence of characters.";
+         p2.textContent="2.Strings are useful for holding data that can be represented in text form. ";
+         p3.textContent="3.Some of the most-used operations on strings are to check their length, to build and concatenate them";
+         p4.textContent="4.Strings can be created as primitives, from string literals, or as objects, using the String() constructor";
+         p5.textContent="5.String are immutable.";
+         document.querySelector("#div2").append(p1,p2,p3,p4,p5)
+     }
+
+     function Numbers()
+     {
+
+         document.querySelector("#div2").innerHTML=""
+         var p1=document.createElement("p");
+         var p2=document.createElement("p");
+         var p3=document.createElement("p");
+         var p4=document.createElement("p");
+         var p5=document.createElement("p");
+         p1.textContent="1.Number is a primitive wrapper object used to represent and manipulate numbers";
+         p2.textContent="2.The Number constructor contains constants and methods for working with numbers.";
+         p3.textContent="3. Values of other types can be converted to numbers using the Number() function.";
+         p4.textContent="4.Numbers are immutable.";
+         p5.textContent="5.Number may also be expressed in literal forms like 0b101, 0o13, 0x0A.";
+         document.querySelector("#div2").append(p1,p2,p3,p4,p5)
+
+     }
+     function null1()
+     {
+        document.querySelector("#div2").innerHTML=""
+         var p1=document.createElement("p");
+         var p2=document.createElement("p");
+         var p3=document.createElement("p");
+         var p4=document.createElement("p");
+         var p5=document.createElement("p");
+         p1.textContent="1.The value null represents the intentional absence of any object value.";
+         p2.textContent="2.it is primitive data type.";
+         p3.textContent="3.it is treated as falsy for boolean operations.";
+         p4.textContent="4.type of null is object.";
+         p5.textContent="5.Its just a special value which represents nothing, empty or value unknown.";
+         document.querySelector("#div2").append(p1,p2,p3,p4,p5)
+     }
+   
+
+     function undefine()
+     {
+        document.querySelector("#div2").innerHTML=""
+         var p1=document.createElement("p");
+         var p2=document.createElement("p");
+         var p3=document.createElement("p");
+         var p4=document.createElement("p");
+         var p5=document.createElement("p");
+         p1.textContent="1.The meaning of undefined is value is not assigned."
+         p2.textContent="2.If a variable is declared, but not assigned, then its value is undefined."
+         p3.textContent="3.it is immutable."
+         p4.textContent="4.it is primitive data type.";
+         p5.textContent="5.it is a variable in global scope.";
+         document.querySelector("#div2").append(p1,p2,p3,p4,p5)
+     }
+
+   
+
+
+
+
+</script>
