@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    function Person(n, a) {
+    x=this.name = n;
+    y=this.age = a;
+    console.log(x,y)
+  }
+
+  function Teacher(s, n, a) {
+    Person.call(this, n, a);
+   
+    // this.name = n;
+    // this.age = a;
+    this.subject = s;
+  }
+
+  function Student(s, n, a) {
+    Person.apply(this, [n, a]);
+    // this.name = n;
+    // this.age = a;
+    this.subject = s;
+  }
+  function Player(s, n, a) {
+    var x = Person.bind(this, n, a);
+    x();
+    this.sport = s;
+  }
+
+
+  var teacher1 = new Teacher("Physics", "Rahul", 26);
+
+  var player1 = new Player("Cricket", "Virat", 30);
+
+  var student1 = new Student("Js", "Tushar", 19);
+
+
+  console.log("teacher1:",  teacher1);
+  console.log("player1:", player1);
+ console.log("student1:", student1);
+
+  console.log(player1);
+
+  
+
+ 
+</script>

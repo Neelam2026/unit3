@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     
+      #display{
+        display:grid;
+        grid-template-columns: repeat(3,1fr);
+       
+      }
+      #div1{
+        border:3px solid rgb(223, 208, 208);
+        margin: 2%;
+        width: 80%;
+        text-align: left;
+        padding: 1%;
+        background-color: rgb(173, 221, 230);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+      }
+      body{
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+   
+
+    <h1>Display Student's Details </h1>
+    <hr>
+    <div id="display"> </div>
+</body>
+</html>
+<script>
+
+    var dataArr=JSON.parse(localStorage.getItem("data")) || [];
+  
+      dataArr.map(function (elem){
+      
+      var div1 = document.createElement("div");
+      div1.setAttribute("id","div1");
+      var name = document.createElement("p");
+      name.textContent =`Student name : ${elem.Name} `
+
+      var mbl = document.createElement("p");
+      mbl.textContent = `Student number : ${elem.Mobile} `
+
+      var city= document.createElement("p");
+      city.textContent = `Student city : ${elem.City} `
+      
+     div1.append(name,mbl,city)
+     document.querySelector("#display").append(div1)
+      
+   
+    });
+
+    
+
+  
+</script>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 18px;
+            width: 85%;
+        }
+        #container>div{
+          
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+        }
+        #flex{
+            display: flex;
+            justify-content: space-between;
+            background-color: dimgray;
+           
+        
+        }
+        #flex>p:nth-child(2){
+            text-decoration: line-through;
+        }
+        #h1{
+            background-color: rgb(169, 236, 105);
+            width: 100%;
+            text-align: center;
+           padding: 1%;
+           font-size: large;
+          
+          
+        }
+        #btn{
+            width: 100%;
+            height: 30px;
+           background-color: greenyellow;
+        }
+        #name{
+            font-size: 80%;
+            font-family: sans-serif;
+            font-weight: 550;
+            color: grey;
+        }
+        #cart
+        {
+          width: 20%;
+          margin-bottom: 2%;
+          margin-top: 1%;
+          height: 30px;
+         background-color: red;
+         margin-left: 40%;
+    }
+    #pricesort{
+        width: 20%;
+          margin-top: 1%;
+          height: 30px;
+         background-color:rgb(179, 170, 170);
+        
+    }
+    #brandFilter{
+        width: 20%;
+          margin-top: 1%;
+          height: 30px;
+         background-color:rgb(172, 224, 240);
+        
+    }
+
+          
+    </style>
+</head>
+<body>
+    <div id="h1">Men Page</div> 
+  <select id="pricesort" onchange="handleprice()">
+    <option value=""> Price sort</option>
+    <option  value="high">High to low</option>
+     <option  value="low" >low to high</option>
+    </select>
+    <select  name="" id="brandFilter" onchange="filterbrand()">
+        <option value="">Select Brand</option>
+        <option value="nike">Nike</option>
+        <option value="reebok">Reebok</option>
+        <option value="adidas">Adidas</option>
+      </select>
+    <button id="cart">Go to cart</button>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+   var mensdata=JSON.parse(localStorage.getItem("mensData"));
+   var cartArr=JSON.parse(localStorage.getItem("cartitem")) || [];
+
+     displayData(mensdata);
+
+        function  displayData(mensdata){
+        document.querySelector("#container").innerHTML = "";
+        mensdata.map(function(data){
+        var div= document.createElement("div");
+        var image=document.createElement("img");
+        image.setAttribute("src",data.image_url);
+
+        var name=document.createElement("p");
+        name.textContent=data.name;
+        name.setAttribute("id","name");
+
+        var bname=document.createElement("p");
+        bname.textContent=data.brandName;
+        bname.setAttribute("id","name");
+        bname.style.backgroundColor="cyan";
+        
+        var div1=document.createElement("div");
+        div1.setAttribute("id","flex");
+
+        var p1=document.createElement("p");
+        p1.textContent=data.price;
+
+        var p2=document.createElement("p");
+        p2.textContent=data.strikedoffprice;
+        div1.append(p1,p2);
+
+        var btn=document.createElement("button");
+        btn.textContent="Add to cart";
+        btn.setAttribute("id","btn");
+        btn.addEventListener("click",function(){
+            addtocart(data)
+        });
+
+        div.append(image,name,bname,div1,btn);
+
+        document.querySelector("#container").append(div);
+    });
+}
+
+    function addtocart(data){
+        cartArr.push(data);
+        localStorage.setItem("cartitem",JSON.stringify(cartArr));
+        alert("Added Successfully")
+    }
+    document.querySelector("#cart").addEventListener("click",function(){
+        window.location.href="cart.html";
+    });
+
+  function handleprice(){
+  var selected= document.querySelector("#pricesort").value;
+  if(selected=="high")
+  {
+    mensdata.sort(function(a,b){
+        return +(b.price) - (+(a.price));
+    });
+  }
+  else{
+    mensdata.sort(function(a,b){
+        return +(a.price) - (+(b.price));
+    });
+  }
+  displayData(mensdata);
+  }
+
+
+  function filterbrand(){
+      var selected=document.querySelector("#brandFilter").value;
+     var filterlist=mensdata.filter(function(element){
+        return element.brandName == selected;  
+     })
+     displayData(filterlist);
+  }
+
+
+</script>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+//     let a1= new Array(1,2,3,4)       //array inbuilt
+//     a1.push(6)
+//     console.log(a1)
+
+// console.log("*******************************************a1done")
+
+//    let a2= new String('nikukikuu')
+//    console.log(a2)
+// //    a2.split("n")
+// //    console.log(a2)
+
+// console.log("*******************************************a2done")
+
+
+// let a3= new myarray(1,2,3,4) ;
+// function myarray(){
+//     for(i=0;i<arguments.length;i++)
+//     {
+//         this[i]=arguments[i]
+
+//     }
+// } 
+
+// console.log(a3)   //cretaed in object form but not showing length
+// console.log(Object.values(a3)) //array length shown
+
+// console.log("*******************************************a3done")
+// let a4= new myarray(1,2,3,8) ;
+// function myarray(){
+//     for(i=0;i<arguments.length;i++)
+//     {
+//         this[i]=arguments[i]
+//         this.length=arguments.length
+        
+//     }
+// } 
+
+// console.log(a4)   //cretaed in object form  showing length
+// console.log(Object.values(a4)) //array  but length also included length as an argument
+
+
+// console.log("*******************************************a4done")
+
+
+// let a5= new myyyarray(1,2,3,8) ;
+// function myyyarray(){
+
+//     Object.defineProperty(this,"length",{
+    
+//         writable:true,
+//         enumerable:false,
+//     })
+//     for(i=0;i<arguments.length;i++)
+//     {
+//         this[i]=arguments[i]
+//         this.length=arguments.length
+        
+//     }
+// } 
+
+// console.log(a5)   //cretaed in object form  showing length
+// console.log(Object.values(a5)) //array  correct length 
+// console.log("*******************************************a5done")
+
+
+// myyyarray.prototype.pushhhh=function(x){
+//     let index=this.length;
+//     this[index]=x;
+//     this.length++;
+
+// }
+
+// a5.pushhhh(15)
+// console.log(Object.values(a5))
+
+// console.log("*******************************************pushdone")
+
+// myyyarray.prototype.popppp=function(x){
+//     let index=this.length-1;
+//    delete this[index]
+//    this.length--;
+// }
+
+// a5.popppp()
+// console.log(Object.values(a5))
+
+// console.log("*******************************************popdone")
+
+
+
+
+
+
+function check(){
+    a = 2;
+    b = 1;
+    for (i = 2;i<4;i++){
+        if (i % 2 == 0){
+            a += i;
+        }else{  
+            b += i;
+        }    
+    }
+    if (a > b){
+        return true;
+    }else{
+        return false;
+    }
+}
+x=check()
+console.log(x)
+</script>

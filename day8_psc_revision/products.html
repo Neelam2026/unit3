@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+      }
+      img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+      }
+      button,
+      select {
+        margin-top: 10px;
+        padding: 10px;
+        cursor: pointer;
+      }
+      #navbar {
+        background-color: #cecece;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 20px;
+      }
+      #navbar > * {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+      }
+      #container > div {
+        padding: 10px;
+        border: 1px solid #cecece;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .text-align-center {
+        text-align: center;
+      }
+    </style>
+    <title>Products</title>
+  </head>
+  <body>
+    <div id="navbar">
+      <div id="cart-count"></div>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div id="sort-filter">
+      <select name="sort" id="sortButton" onchange="sortProducts()">
+        <option value="">SORT</option>
+        <option value="asc">Low to High</option>
+        <option value="desc">High to Low</option>
+      </select>
+      <select name="filter" id="filterButton" onchange="filterProducts()">
+        <option value="">FILTER</option>
+        <option value="0-50">0 - 50</option>
+        <option value="51-150">51 - 150</option>
+        <option value=">150">Greater than 150</option>
+      </select>
+    </div>
+    <div id="container"></div>
+    <script>
+      let url = `https://fakestoreapi.com/products`;
+
+      async function getProducts() {
+        try {
+          let productsList = await fetchProducts(url); // expected response [{id:1, title:1, ...},{},{}...]
+          renderProducts(productsList);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      getProducts();
+
+      // to prevent unexpected error for the first time when we start application since there is no "cart" data in local storage initially;
+      let cart = localStorage.getItem("cart");
+      if (!cart) {
+        // if cart is null/undefined;
+        cart = []; // initialize it with empty array;
+        localStorage.setItem("cart", JSON.stringify(cart));
+        refreshCartCount(cart);
+      } else {
+        // if data exists in cart;
+        cart = JSON.parse(cart); // get the data | data format [{id:1, title:1, ..},{},{}]
+        refreshCartCount(cart);
+      }
+
+      function refreshCartCount(cart) {
+        // argument format [{id:1, title:1, ...},{},{}]
+        let cartCount = document.getElementById("cart-count");
+        cartCount.textContent = " Cart Count : " + cart.length;
+      }
+
+      function fetchProducts(url) {
+        return fetch(url) // fetch the data from url provided;
+          .then(function (res) {
+            return res.json(); // collect all the data that comes in form of data packet and make it a single entity
+          })
+          .then(function (res) {
+            return res; // returns the response;
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      }
+
+      // this function gets invoked when users changes sort criteria
+      async function sortProducts() {
+        try {
+          // get all the products;
+          // if sortCriteria --> asc,desc; --> sort the products;
+          // render/display the sorted/filtered products
+          let productsList = await fetchProducts(url);
+          let sortCriteria = document.getElementById("sortButton").value; // "asc", "desc"
+          // filter critera here so that before sorting and showing result; if there exists filter criteria; it also is taken in consideration;
+          let filterCriteria = document.getElementById("filterButton").value; //values expected : "0-50" , "51-150", ">150"
+
+          if (sortCriteria) {
+            let updatedProductsList = productsList
+              .filter(filterFunction)
+              .sort(function sortFunction(prodA, prodB) {
+                if (sortCriteria === "asc") {
+                  return prodA.price - prodB.price;
+                } else if (sortCriteria === "desc") {
+                  return prodB.price - prodA.price;
+                }
+              });
+            renderProducts(updatedProductsList);
+          } else {
+            let updatedProductsList = productsList.filter(filterFunction);
+            renderProducts(updatedProductsList);
+          }
+
+          /* 
+          if there exists filter criteria; -->only elements which passes the filter criteria gets returns -
+          ->else all the element gets returned;
+          */
+          function filterFunction(prod) {
+            if (filterCriteria === "0-50") {
+              return prod.price <= 50;
+            } else if (filterCriteria === "51-150") {
+              return prod.price > 50 && prod.price <= 150;
+            } else if (filterCriteria === ">150") {
+              return prod.price > 150;
+            } else {
+              return true;
+            }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      async function filterProducts() {
+        try {
+          // get all the products;
+          // if sortCriteria --> asc,desc; --> sort the products;
+          // render/display the sorted/filtered products
+          let productsList = await fetchProducts(url); // [{},{}]
+          let filterCriteria = document.getElementById("filterButton").value; //values expected : "0-50" , "51-150", ">150"
+          let sortCriteria = document.getElementById("sortButton").value; //"asc", "desc"
+          if (sortCriteria) {
+            let updatedProductsList = productsList
+              .filter(filterFunction)
+              .sort(function sortFunction(prodA, prodB) {
+                if (sortCriteria === "asc") {
+                  return prodA.price - prodB.price;
+                } else if (sortCriteria === "desc") {
+                  return prodB.price - prodA.price;
+                }
+              });
+            renderProducts(updatedProductsList);
+          } else {
+            let updatedProductsList = productsList.filter(filterFunction);
+            renderProducts(updatedProductsList);
+          }
+          function filterFunction(prod) {
+            if (filterCriteria === "0-50") {
+              return prod.price <= 50;
+            } else if (filterCriteria === "51-150") {
+              return prod.price > 50 && prod.price <= 150;
+            } else if (filterCriteria === ">150") {
+              return prod.price > 150;
+            } else {
+              return true;
+            }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      function renderProducts(products) {
+        // product argument format :  [{title:"", price:""},{},{}]
+        // append all of these card in one container;
+        let container = document.getElementById("container");
+        container.innerHTML = ""; // empty out container to repaint DOM with the current products data that has been passed as argument;
+
+        products.forEach(function (prod) {
+          // {id:1, title: "", }
+          let prodCard = document.createElement("div");
+          // go through each of the product --> 1 product = 1 div ( a card with that product detail )
+          // create card;
+
+          // create product image;
+          let image = document.createElement("img");
+          image.src = prod.image; // image url src;
+
+          // create product title
+          let title = document.createElement("p");
+          title.textContent = prod.title;
+
+          // create prod price;
+          let price = document.createElement("p");
+          price.textContent = "Price : INR " + prod.price;
+
+          // create Add to Cart button;
+          let addToCartButton = document.createElement("button");
+          addToCartButton.textContent = "Add to Cart";
+          addToCartButton.onclick = function (event) {
+            // add to cart --> items should get added to cart --> cart count should change in navbar;
+            addToCart(prod);
+          };
+
+          prodCard.append(image, title, price, addToCartButton);
+          container.append(prodCard);
+        });
+
+        function addToCart(prod) {
+          // input format : {id:1, title: "Mens Casual Premium Slim Fit T-Shirts",.....}
+          // we need to add this product to the cart ( cart is in local storage)
+          let cart = JSON.parse(localStorage.getItem("cart")); // get cart data from local storage;
+
+          cart.push(prod); // add new item to the cart;
+
+          localStorage.setItem("cart", JSON.stringify(cart)); // save the data to local storage;
+          refreshCartCount(cart); // refreshCartCount function gets invoked which will refresh cart count on navbar so it gets the latest data
+        }
+      }
+    </script>
+  </body>
+</html>

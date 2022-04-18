@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box1 {
+        width: 100%;
+        height: 80px;
+        background-color: red;
+        display: flex;
+        box-shadow: rgba(173, 180, 177, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+      #a1 {
+        margin-top: 18px;
+        font-size: xx-large;
+        color: white;
+        width: 70%;
+      }
+      #moviesearch {
+        margin-top: 18px;
+        box-shadow: rgba(173, 180, 177, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+        font-size: x-large;
+      }
+      #a2 {
+        margin-top: 18px;
+        border: 0px;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: black;
+        box-shadow: rgba(173, 180, 177, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+      #box2 {
+        background-image: url("https://c4.wallpaperflare.com/wallpaper/799/191/755/godzilla-movies-digital-art-movie-poster-wallpaper-preview.jpg");
+        /* background:no-repeat; */
+        width: 100%;
+        height: 410px;
+        border: 1px solid black;
+        /* background-size:cover; */
+        /* background-size: no-repeat; */
+        /* background-size: 100%; */
+      }
+      #movie {
+        width: 40%;
+        height: 250px;
+        /* background-color: red; */
+        margin: auto;
+        margin-top: 80px;
+        display: flex;
+        /* border:1px solid red; */
+      }
+      #posters {
+        width: 100%;
+        height: 200px;
+      }
+      #p,
+      #p1,
+      #p2,
+      #imdb {
+        color: white;
+        margin-left: 10px;
+      }
+      #divider {
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGqZiB76FCCN8pZ9GD7bkoTcdmCMqojFTiBQ&usqp=CAU");
+
+        width: 100%;
+      }
+      #h1 {
+        text-align: center;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1">
+      <div id="a1">Movies adda</div>
+      <div>
+        <input
+          type="text"
+          id="moviesearch"
+          placeholder="Enter Movie name...."
+        />
+      </div>
+      <div><button id="a2" onclick="getMovies()">Search</button></div>
+    </div>
+    <div id="box2">
+      <div id="movie"></div>
+    </div>
+  </body>
+</html>
+<script>
+  async function getMovies() {
+    try {
+      var z = document.querySelector("#moviesearch").value;
+
+      let res = await fetch(`http://www.omdbapi.com/?apikey=3bc6bab9&t=${z}`);
+      let data = await res.json();
+          if(data.Response=="False"){
+            error();
+          }else{
+            get(data);
+          }
+
+        // console.log(data.Response);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  function get(data) {
+    // console.log(data);
+    document.querySelector("#movie").innerHTML = "";
+
+    var img = document.createElement("img");
+    img.src = data.Poster;
+    img.setAttribute("id", "posters");
+
+    var diver = document.createElement("div");
+    diver.setAttribute("id", "diver");
+    diver.append(img);
+    var p = document.createElement("p");
+    p.textContent = `Name: ${data.Title} `;
+    p.setAttribute("id", "p");
+
+    var p1 = document.createElement("p");
+    p1.textContent = `Realesed date:${data.Released}`;
+    p1.setAttribute("id", "p1");
+
+    var p2 = document.createElement("p");
+    p2.textContent = `BoxOffice:${data.BoxOffice}`;
+    p2.setAttribute("id", "p2");
+
+    var diver1 = document.createElement("div");
+    diver1.setAttribute("id", "diver1");
+    diver1.append(p, p1, p2);
+    var imdb = document.createElement("p");
+    imdb.textContent = `Rating : ${data.imdbRating} ⭐`;
+    imdb.setAttribute("id", "imdb");
+    if (Number(data.imdbRating) > 8.5) {
+      diver1.append(imdb);
+    }
+
+    document.querySelector("#movie").append(diver, diver1);
+  }
+
+  function error() {
+    document.querySelector("#movie").innerHTML = "";
+    // console.log(err)
+    var divider = document.createElement("div");
+    divider.setAttribute("id", "divider");
+    var h1 = document.createElement("h1");
+    h1.textContent = `Search Something enjoy Something try to mess with you! `;
+    h1.setAttribute("id", "h1");
+    divider.append(h1);
+    document.querySelector("#movie").append(divider);
+  }
+</script>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <style>
+      #login-form{
+        width:30%;
+        background-color: rgb(153, 150, 150);
+    margin:auto;
+    text-align: center;
+    margin-top: 5%;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
+      }
+      #login-username,#login-password{
+        width: 60%;
+      padding: 2%;
+      margin: 3%;
+      }
+    
+
+#login_btn{
+  padding: 2%;
+     width: 35%;
+     margin: 6%;
+     margin-bottom: 15%;
+     color: white;
+     background-color: black;
+     border: 0;
+     border-radius: 6px;
+     font-size: 100%;
+     }
+     #top{
+       padding-top: 5%;
+     }
+
+
+    </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+    <div id="login-form">
+        <h1 id="top">Login</h1>
+        <form>
+        User Name: <input type="text" id="login-username" placeholder="username" />
+          <br>
+        Password : <input type="text" id="login-password" placeholder="Password" />
+          <br>
+        </form>
+
+        <button id="login_btn">Login</button>
+      </div>
+    <h1 id="show_name"></h1>
+
+</body>
+</html>
+<script type="module" src="./scripts/login.js">
+
+
+
+
+</script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 40%;
+        }
+        #cont{
+            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(4,20%);
+            gap: 3%;
+        }
+    </style>
+</head>
+<body>
+    <div id="cont"></div>
+</body>
+</html>
+<script>
+    //  let url="https://fakestoreapi.com/products"
+    //  let myrequest=fetch(url)
+    // // console.log("x:",x)
+
+    // myrequest.then(function(res){
+    //     //console.log("res.json()",res.json())
+    //     return res.json()
+    // })
+    // .then(function(res){
+    //     console.log("res:",res)
+    // })
+    // .catch(function(err){
+    //     console.log(err)
+    // })
+
+
+//for url     fakestoreapi.com
+    async function getdata(){
+     try
+        {
+            let url="https://fakestoreapi.com/products"
+            let res=await fetch(url)
+             let data= await  res.json()
+             appenddata(data)
+             console.log("data:",data)
+        }
+        catch(err)
+        {
+           console.log("err:",err)
+        }
+    }
+
+    function appenddata(data){
+   
+        //data.map(function(el))
+    data.forEach(function(el){
+        
+        //console.log("el:",el)
+        var div=document.createElement("div")
+        var img=document.createElement("img")
+        img.src=el.image;
+        var title=document.createElement("p")
+        title.innerText=el.title;
+        var price=document.createElement("p")
+        price.innerText=el.price;
+
+        div.append(img,title,price)
+       document.getElementById("cont").append(div);
+    })
+    }
+    
+    getdata()
+</script>

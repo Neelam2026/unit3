@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <style>
+        body{
+         background-color: rgb(45,32,19);
+     }
+     .search form {
+ display: flex;
+
+ height: 45px;
+ margin-top: 2%;
+ margin-bottom: 2%;
+}
+.search input {
+ width:30%;
+  border: 0;
+ height: 91%;
+ border-radius: 5px 0 0 5px;
+ margin-left:33% ;
+ border-right: 1px solid gray;
+}
+
+input:focus {
+ outline: none;
+ border: 1px solid #ddd;
+}
+.search button {
+ height: 95%;
+ width: 60px;
+ border: none;
+ border-radius:  0 5px  5px 0;
+}
+/* container */
+#container {
+display: grid;
+grid-template-columns: repeat(4,1fr);
+gap: 2%;
+width: 80%;
+margin-left:11.5% ;
+color: #ddd;
+text-align: center;
+}
+#container>div img {
+   width:90% ;
+}
+ </style>
+</head>
+<body>
+      <!--navbar  -->
+      <div id="navbar_container"></div>
+     <hr>
+     <h2>Popular Dishes.....</h2>
+     <hr>
+      <div id="container"></div>
+</body>
+</html>
+<script type="module" src="./latest.js"></script>

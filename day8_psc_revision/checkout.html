@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      textarea {
+        resize: none;
+      }
+    </style>
+    <title>Checkout</title>
+  </head>
+  <body>
+    <textarea name="address" id="address" cols="50" rows="10"></textarea>
+    <button onclick="addAddress()">ADD ADDRESS</button>
+    <script>
+      function addAddress() {
+        let address = document.getElementById("address").value;
+        console.log(address);
+        if (address) {
+          // if address exists; redirect to payment page;
+          window.location.href = "payment.html";
+        }
+      }
+    </script>
+  </body>
+</html>

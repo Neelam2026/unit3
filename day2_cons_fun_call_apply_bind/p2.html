@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function nikep(a,b,c)  //1 //cf
+    {
+       this.product=a;
+       this.price=b;
+       this.type=c;
+      
+    }
+
+
+    obj= new nikep("shoe", "2000", "boots")
+    console.log(obj)
+
+
+    function nikeproduct(a,b,c){  //nf
+        obj={
+        product:a,
+       price:b,
+       type:c,
+        }
+
+        return obj
+    }
+
+    x=nikeproduct("shoe",3000,"boots")
+    console.log(x)
+</script>

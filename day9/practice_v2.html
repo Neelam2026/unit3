@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box1 {
+        width: 100%;
+        height: 80px;
+        background-color: red;
+        display: flex;
+        box-shadow: rgba(173, 180, 177, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+      #a1 {
+        margin-top: 18px;
+        font-size: xx-large;
+        color: white;
+        width: 70%;
+      }
+      #query {
+        margin-top: 18px;
+        box-shadow: rgba(173, 180, 177, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+        font-size: x-large;
+      }
+      #a2 {
+        margin-top: 18px;
+        border: 0px;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: black;
+        box-shadow: rgba(173, 180, 177, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+      #box2 {
+        background-image: url("https://c4.wallpaperflare.com/wallpaper/799/191/755/godzilla-movies-digital-art-movie-poster-wallpaper-preview.jpg");
+        /* background:no-repeat; */
+        width: 100%;
+        height: 410px;
+        border: 1px solid black;
+        /* background-size:cover; */
+        /* background-size: no-repeat; */
+        /* background-size: 100%; */
+      }
+      #movie {
+        width: 40%;
+        height: 250px;
+        /* background-color: red; */
+        margin: auto;
+        margin-top: 80px;
+        display: flex;
+        /* border:1px solid red; */
+      }
+      #posters {
+        width: 100%;
+        height: 200px;
+      }
+      #p,
+      #p1,
+      #p2,
+      #imdb,#p3 {
+        color: white;
+        margin-left: 10px;
+      }
+      #divider {
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGqZiB76FCCN8pZ9GD7bkoTcdmCMqojFTiBQ&usqp=CAU");
+        border-radius: 50%;
+        width: 100%;
+      }
+      #h1 {
+          margin-top: 70px;
+        text-align: center;
+        color: white;
+      }
+      #movies{
+        font-size: x-large;
+        overflow:auto;
+        height:300px;
+        width:300px;
+      }
+      ::-webkit-scrollbar {
+          width: 0px;
+    }
+      
+      #sposters {
+        width: 100%;
+        height: 100px;
+      }
+      #sdiver2{
+          margin-bottom: 5px;
+          display: flex;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+      }
+      #sp,#sp1,#sp2
+       {
+
+        color: white;
+        margin-left: 5px ;
+        font-size:small;
+        /* border:1px solid red; */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1">
+      <div id="a1">Movies adda</div>
+      <div>
+        <input   type="text" oninput="debounce(main,1000)"         id="query"      placeholder="Enter Movie name...."/>
+        <div id="movies"></div>
+
+      </div>
+      <div><button id="a2">Search</button></div>
+    </div>
+    <div id="box2">
+      <div id="movie"></div>
+    </div>
+  </body>
+</html>
+<script>
+  async function searchMovie() {
+    try {
+      var z = document.querySelector("#query").value;
+
+      let res = await fetch(`http://www.omdbapi.com/?apikey=3bc6bab9&s=${z}`);
+      let data = await res.json();
+      console.log(data)
+
+        return data.Search; 
+
+        // console.log(data.Response);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async   function main(){
+
+
+let data = await searchMovie();
+// console.log(data);
+if(data==undefined){
+     error()
+}else{
+    console.log(data);
+appendData(data);
+}
+
+
+}
+function appendData(movies){
+document.querySelector("#movies").innerHTML="";
+
+movies.forEach(function(data){
+
+    var img = document.createElement("img");
+    img.src = data.Poster;
+    img.setAttribute("id", "sposters");
+
+    var diver = document.createElement("div");
+    diver.setAttribute("id", "sdiver");
+    diver.append(img);
+    var p = document.createElement("p");
+    p.textContent = `Name: ${data.Title} `;
+    p.setAttribute("id", "sp");
+
+    var p1 = document.createElement("p");
+    p1.textContent = `Type:${data.Type}`;
+    p1.setAttribute("id", "sp1");
+
+    var p2 = document.createElement("p");
+    p2.textContent = `Year:${data.Year}`;
+    p2.setAttribute("id", "sp2");
+
+    var diver1 = document.createElement("div");
+    diver1.setAttribute("id", "sdiver1");
+    diver1.append(p, p1, p2);
+
+    var diver2 = document.createElement("div");
+    diver2.setAttribute("id", "sdiver2");
+    diver2.append(diver, diver1);
+    diver2.addEventListener("click",function(){
+        get(data);
+    });
+    document.querySelector("#a2").addEventListener("click",function(){
+       
+        get(data);
+    });
+   
+     document.querySelector("#movies").append(diver2);
+});
+
+ }
+
+ let timerId;
+ function debounce(func, delay){
+      
+      if(timerId){
+          clearTimeout(timerId);
+      }
+       timerId = setTimeout(function(){
+         func();
+
+     },delay);
+ }
+
+
+  function get(data) {
+    // console.log(data);
+    document.querySelector("#movie").innerHTML = "";
+
+    var img = document.createElement("img");
+    img.src = data.Poster;
+    img.setAttribute("id", "posters");
+
+    var diver = document.createElement("div");
+    diver.setAttribute("id", "diver");
+    diver.append(img);
+    var p = document.createElement("p");
+    p.textContent = `Name: ${data.Title} `;
+    p.setAttribute("id", "p");
+
+    var p1 = document.createElement("p");
+    p1.textContent = `Type :${data.Type}`;
+    p1.setAttribute("id", "p1");
+
+    var p2 = document.createElement("p");
+    p2.textContent = `Year:${data.Year}`;
+    p2.setAttribute("id", "p2");
+
+    var imdb = document.createElement("p");
+    let x=Math.round(Math.random()*10)
+       if(x<=5){
+         x+=4.5
+       }
+    imdb.textContent = `Rating : ${x} ⭐`;
+    imdb.setAttribute("id", "imdb");
+     
+    var diver1 = document.createElement("div");
+    diver1.setAttribute("id", "diver1");
+    diver1.append(p, p1, p2,imdb);
+   
+   
+
+    document.querySelector("#movie").append(diver, diver1);
+  }
+
+  function error() {
+    document.querySelector("#movie").innerHTML ="";
+    document.querySelector("#movies").innerHTML="";
+
+    // console.log(err)
+    var divider = document.createElement("div");
+    divider.setAttribute("id", "divider");
+    var h1 = document.createElement("h1");
+    h1.textContent = `Search Something enjoy Something try to mess with you Search your future here `;
+    h1.setAttribute("id", "h1");
+    divider.append(h1);
+    document.querySelector("#movie").append(divider);
+  }
+</script>

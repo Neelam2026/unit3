@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+
+       class car{
+           constructor(a,b){
+             this.name=a;
+             this.brand=b;
+
+           }
+       }
+
+       let car1=new car("Duster","Renault")
+       console.log("car1" ,car1)
+
+
+       class SUV extends car{
+           constructor(a,b,c,d)
+           {
+               super(a,b)
+               this.owner=c;
+               this.type=d;
+           }
+       }
+  
+       let SUV1=new SUV("pablo","SUV","Duster","Renault")
+       console.log("SUV1" ,SUV1)
+
+
+       //************************
+
+       class person2{        //no need to invoke person because it is class
+         constructor(a,b)
+        {
+         this.name=a;
+         this.sport=b; 
+        }
+    
+        showname=()=>     // or showname()   //use of arrow function
+        {          
+        console.log(this.name)
+        }
+    }
+
+    let per2= new person2("pablo","polo")
+    
+    console.log("per2",per2)
+    per2.showname()
+
+
+</script>

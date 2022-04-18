@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+       #box{
+          display:grid;
+          grid-template-columns: repeat(5,1fr);
+          grid-gap:5px;
+          background-image: url('https://media.istockphoto.com/photos/film-movie-background-clapperboard-and-film-reels-in-theatre-picture-id686746978?b=1&k=20&m=686746978&s=170667a&w=0&h=FJfvPe93mHj_cHFFvA5h9V_1H7QjlnTD1vm2qvaG448=');
+          background-size: 100%;;
+       }
+       #navbar{
+           display: flex;
+           background-color: rgb(3,37,65);
+           width:100%;
+        
+       }
+       #navbar>p{
+           color:white;
+           margin-left: 25px;
+           border:1 px solid red;
+
+       }
+       #img{
+           width:12%;
+       }
+       #searchbar{
+           margin-top: 6px;
+           margin-left: 150px;
+           border-radius: 15px;
+           height: 30px;;
+           width:40%
+       }
+       #navbar1{
+        border:1 px solid red;
+        height: 400px;
+        width:100%;
+        margin-top: -27px;
+        
+        background-image: url("https://media.istockphoto.com/photos/35mm-film-strip-gradient-background-picture-id1299279536?s=612x612");
+    }
+    #navbar1>h1,h2{
+        font-size:250%;
+       
+        color:white;
+
+    }
+    #navbar2{
+        background-image: url('https://media.istockphoto.com/photos/film-movie-background-clapperboard-and-film-reels-in-theatre-picture-id686746978?b=1&k=20&m=686746978&s=170667a&w=0&h=FJfvPe93mHj_cHFFvA5h9V_1H7QjlnTD1vm2qvaG448=');
+          background-size: 100%;
+          font-size: xx-large;
+          margin-top: -38px;
+          margin-bottom: px;
+          border:5px dashed white;
+
+
+    }
+    h3{
+        color:white;
+        margin-left: 150px;
+
+    }
+    #div1{
+        /* border:1px dashed white; */
+        width:87%;
+        }
+        #imdb,#release,#name{
+            color:white;
+
+        }
+       
+        #imdb:hover,#release:hover,#name:hover{
+            color:black;
+        }
+        #showtime{
+            
+            display: flex;
+        }
+        #poster1{
+            /* width:100%; */
+            height: 200px;
+        }
+        #imdb1,#release1,#name1,#overview{
+            color:red;
+            margin-left: 20px;
+
+        }
+        #showtime:hover{
+
+             background-image: url("");
+           background-size: 100%;
+           color:white;
+            }
+       #imdb1:hover,#release1:hover,#name1:hover,#overview:hover{
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <img id="img" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="">
+        <p>Movies</p>
+        <p>TV Shows</p>
+        <p>People</p>
+        <p>More</p>
+        <input id="searchbar" type="text" placeholder="Popular movies.....">
+        <p>Log-in</p>
+   
+    </div>
+    <div id="navbar1">
+        <h1>Welcome!</h1>
+        <h2>Millions of movies, TV shows and people to discover. Explore now.</h2>
+         <div id="showtime"></div>   
+    </div>
+    <div id="navbar2"><h3>Popular Movies....... </h3></div>
+<div id="box"></div>
+<div id="box1"></div>
+</body>
+</html>
+
+
+
+<script>
+
+
+let url = 'https://api.themoviedb.org/3/movie/popular/?api_key=0bf56121ffec25e3581343f9f85c2fc2&append_to_response=images';
+// let url='https://api.themoviedb.org/4/list/1?api_key=e0bd4a62c57d290c876c083e915f73c0&append_to_response=images';
+
+async function getdata(){
+
+
+    let value= await fetch(url);
+    let data=  await value.json();
+    console.log(data);
+    makedata(data);
+}
+getdata();
+
+function makedata(data){
+    data.results.map(function(data){
+
+    var img = document.createElement('img')
+    img.setAttribute("id","poster");
+    img.src=`https://www.themoviedb.org/t/p/w200${data.poster_path}`
+    
+
+    var name=document.createElement('p')
+    name.setAttribute("id","name");
+    name.innerHTML=`Name:${data.original_title}`
+
+
+    var release=document.createElement('p')
+    release.setAttribute("id","release");
+    release.innerHTML=`Release Date:${data.release_date}`
+
+
+    var imdb=document.createElement('p')
+    imdb.setAttribute("id","imdb");
+    imdb.innerHTML=`Imdb Rating:${data.vote_average}⭐`
+
+    var div1 = document.createElement('div')
+       div1.setAttribute("id","div1");
+       div1.addEventListener("click",function(){
+        getdetails(data)
+    }) 
+    div1.append(img,name,release,imdb)
+   
+
+    document.querySelector("#box").append(div1)
+
+})
+}
+
+function getdetails(data){
+console.log(data);
+document.querySelector("#showtime").textContent="";
+
+var img1 = document.createElement('img')
+    img1.setAttribute("id","poster1");
+    img1.src=`https://www.themoviedb.org/t/p/w200${data.poster_path}`
+    
+    var div2 = document.createElement('div')
+       div2.setAttribute("id","div2");
+       div2.append(img1)
+
+    var name1=document.createElement('p')
+    name1.setAttribute("id","name1");
+    name1.innerHTML=`Name:::::${data.original_title}`
+
+
+    var release1=document.createElement('p')
+    release1.setAttribute("id","release1");
+    release1.innerHTML=`Release Date:::::${data.release_date}`
+
+
+    var imdb1=document.createElement('p')
+    imdb1.setAttribute("id","imdb1");
+    imdb1.innerHTML=`Imdb Rating:::::${data.vote_average}⭐`
+
+    var overview=document.createElement('p')
+    overview.setAttribute("id","release1");
+    overview.innerHTML=`Overview:::::${data.overview}`
+
+    
+    var div3 = document.createElement('div')
+       div3.setAttribute("id","div3");
+    
+      
+    div3.append(name1,release1,imdb1,overview)
+
+
+
+
+
+
+document.querySelector("#showtime").append(div2,div3)
+
+}
+</script>

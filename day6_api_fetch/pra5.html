@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="pic"></div> 
+    <input type="text" id="Mname"/>
+    <button id="search" onclick=" getMovies()">Serach</button>
+</body>
+</html>
+
+<Script>
+    
+    // function search(){
+    //     var name=document.getElementById("Mname").value;
+    //     getMovies(name)
+    // }
+
+    //key= "484879df"
+    //url=`http://www.omdbapi.com/?apikey=[yourkey]&`
+    
+    async function getMovies(){
+        let names=document.getElementById("Mname").value;
+        //console.log(name)
+        //document.getElementById("pic").innerHTML=""
+       let url=`http://www.omdbapi.com/?apikey=484879df&t=${names}`
+        let res= await fetch(url);
+        //console.log(res)
+        let data =await res.json();
+        console.log("data:",data)
+        img=document.createElement("img");
+        img.src=data.Poster;
+        document.getElementById("pic").append(img)
+
+        
+
+    }
+  
+
+</Script>

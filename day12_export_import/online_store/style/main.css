@@ -1,0 +1,42 @@
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 4%;
+    padding-right: 4%;
+    border: solid 1px black;
+
+  }
+
+  .options {
+
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+  }
+
+  .options h3 {
+
+    padding-left: 30px;
+    padding-right: 10px;
+  }
+
+  img {
+
+    width: 30%
+  }
+
+
+  #data {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 25%);
+    grid-gap: 20px;
+    justify-content: center;
+    padding: 5%;
+   
+
+  }
+  #data >div{
+      border: 1px solid black;
+  }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //components of a promise
+
+//1. pending state
+//2. fullfiled -> output (any kind of message)
+//3. Not fullfilled -> ( error kind of message)
+
+//argument to Promise() -> anonymous function -> argument to anonymous function -> resolve, reject
+
+// let myPromise = new Promise(function (resolve, reject) {
+// reject("THIS ERROR OCCURED, CHECK SPELLINGS");
+// });
+
+// //succes value
+// myPromise.then(function (response) {
+// console.log("response:", response);
+// });
+
+// //failure value?
+// myPromise.catch(function (error) {
+// console.log("error:", error);
+// });
+
+//EXAMPLE
+
+let passexam = true;
+
+let parentPromise = new Promise(function (resolve, reject) {
+setTimeout(function () {
+if (passexam) {
+resolve("laptop");
+} else {
+reject("paragon chappal");
+}
+}, 5000);
+});
+
+console.log("pending");
+
+parentPromise.then(function (resolve) {
+console.log("resolve:", resolve);
+
+console.log("uploaded done");
+});
+
+parentPromise.catch(function (err) {
+console.log("err:", err);
+});
+</script>

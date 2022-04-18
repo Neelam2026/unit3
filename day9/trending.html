@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family:  sans-serif;
+        }
+        #navbar{
+            width: 100%;
+            height: 60px;
+            background-color: rgb(20, 27, 27);
+            text-align: center;
+            color: white;
+            font-size: 220%;
+            padding-top: 1%;
+        }
+        #container_trending_movie{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 2%;
+            width:90%;
+            background-color: rgb(227, 240, 236);
+            margin-top: 3%;
+            margin-left: 5%;
+        }
+        #img1_treding{
+            width: 90%;
+            padding: 5%;
+           
+        }
+        #div1{
+            width: 100%;
+            border-radius: 10px;
+            background-color: black;
+          
+        }
+        #div1:hover{
+            width:400px ;
+          
+        }
+           
+        #div2:hover,#div3:hover,#div4:hover{
+            color :rgb(218, 28, 28);
+            background-color: rgb(24, 23, 23);
+           
+        }
+        #div2,#div3,#div4{
+            color :rgb(185, 172, 172);
+            text-align: center;
+            padding: .5%;
+        }
+        #div4{
+           padding-bottom: 7%;
+        }
+        #a2{
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+     <div id="navbar">Trending Movies</div>
+     
+      
+    <div id="container_trending_movie" > </div>
+
+</body>
+</html>
+
+<script>
+   debounce(main,1000);
+    //e0bd4a62c57d290c876c083e915f73c0
+   //https://api.themoviedb.org/4/list/1?api_key={{apikey}}
+
+ async function get_trending_Movies(){
+        try{
+       
+       let url=`https://api.themoviedb.org/4/list/1?api_key=e0bd4a62c57d290c876c083e915f73c0`
+       let res= await fetch(url);
+       let data =await res.json();
+    
+       //returning the result which will searched
+       return data;
+         }
+         catch(err){
+             console.log("error:",err)
+         }
+      
+        }
+       
+      
+
+    //creation main function 
+    async function main(){
+        let data=await get_trending_Movies();
+        if(data===undefined){
+            return false;
+        }
+       console.log("dataRes:",data);
+       appenddata(data.results)
+      }
+
+    let timerid;    //define timerid globally
+    function debounce(func,delay){
+    func()
+    if(timerid){
+    clearTimeout(timerid)
+    }
+    timerid=setTimeout(function(){
+     func()
+    },delay)
+  }
+  
+
+
+  let movies_div=document.getElementById("container_trending_movie")
+  let movies_name=document.getElementById("movies")
+
+    function appenddata(data){
+       console.log("data3:",data);
+       
+        data.forEach(function(data){
+        console.log(data)   
+        let div1 =document.createElement("div"); 
+        div1.id="div1"
+        let img1_treding =document.createElement("img");
+        img1_treding.id="img1_treding"
+        img1_treding.src=`https://image.tmdb.org/t/p/w500${data.poster_path}`
+        let div2=document.createElement("div");
+        div2.id="div2"
+        div2.textContent=data.title;
+        let div3=document.createElement("div");
+        div3.id="div3";
+        div3.textContent=data.release_date
+        let div4=document.createElement("div");
+        div4.id="div4"
+        div4.textContent=`Rating: ${data.vote_average}⭐⭐⭐⭐⭐`
+        
+        div1.append(img1_treding,div2,div3,div4)
+        
+        document.getElementById("container_trending_movie").append(div1) 
+
+      //original_title  //overview
+       
+      
+    });
+
+   
+   
+    }
+
+
+
+   
+</script>

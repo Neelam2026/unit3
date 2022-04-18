@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    
+	var person1 = {
+	
+	name:'jonny kumar',
+	
+	createAadharId(){
+	
+	w=this.id= Math.round(Math.random()*100000000000000)
+	console.log(this.id) //console.log(w)
+    //return this.id   //return w
+	}
+ }
+	
+	var person2 ={name:'happy singh'}
+    // var person3 ={name:'unhappy singh'}
+    // var person4 ={name:'kyuhappy singh'}
+
+    person1.createAadharId.call(person2)
+    // console.log(p)
+    // p= person1.createAadharId.call(person3)
+    // console.log(p)
+    // p= person1.createAadharId.call(person4)
+    // console.log(p)
+
+
+   console.log("///////////////////////////////******************") ////////////////////////////////////
+
+    var person1 = {
+	
+	name:'jonny kumar',
+	
+	createAadharId(n,a){
+	
+	w=this.id= Math.round(Math.random()*100000000000000)
+    this.no=n;
+    this.xyz=a
+	console.log(this.id,this.no,this.xyz) //console.log(w)
+    return this.id   //return w  //we can return only one data .if want to return more data then use new
+	}
+ }
+	
+	var person2 ={name:'happy singh'}
+    var person3 ={name:'unhappy singh'}
+    var person4 ={name:'kyuhappy singh'}
+
+	person1.createAadharId.call(person2,12,"s") //we can also pass extra data with call and in apply data pass in array form
+    //console.log(p)
+    p= person1.createAadharId.apply(person3,[13,"m"])// apply() define in array form that is only diff
+    console.log(p)
+    pfunction= person1.createAadharId.bind(person4,14,"n")
+     pfunction()
+    //  x=p()  //fr console outside take function result in variable 
+    // console.log(x)
+
+    //in call and apply there is no need to take return in p we can directly console data inside the function 
+    //in bind we just bind the data but not execute till its call. there is variable pfunction is function here thrfore for its execution call or fun invoke is necessary
+
+
+
+    </script>

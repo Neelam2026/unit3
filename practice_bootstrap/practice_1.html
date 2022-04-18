@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+  div{
+      border: 1px solid red;
+  }
+    </style>
+
+</head>
+<body>
+    <h1>Hello, world!</h1>
+
+
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            Column
+        </div>
+        <div class="col">
+          Column
+        </div>
+        <div class="col">
+          Column
+        </div>
+      </div>
+    </div>
+<hr>
+
+
+    <!--  -->
+    <button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-link">Link</button>
+<button type="button" class="btn btn-link  btn-outline-primary">Link</button>
+<hr>
+
+
+<a class="btn btn-primary" href="#" role="button">Link</a>
+<button class="btn btn-primary " type="submit">Button</button>
+<input class="btn btn-primary" type="button" value="Input">
+<input class="btn btn-primary" type="submit" value="Submit">
+<input class="btn btn-primary" type="reset" value="Reset">
+<hr>
+
+<button type="button" class="btn btn-outline-primary">Primar9y</button>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
+<button type="button" class="btn btn-outline-success">Success</button>
+<button type="button" class="btn btn-outline-danger">Danger</button>
+<button type="button" class="btn btn-outline-warning">Warning</button>
+<button type="button" class="btn btn-outline-info">Info</button>
+<button type="button" class="btn btn-outline-light">Light</button>
+<button type="button" class="btn btn-outline-dark   btn-lg">Dark</button>
+<hr>
+<div class="d-grid gap-2">
+    <button class="btn btn-primary" type="button">Button</button>
+    <button class="btn btn-primary" type="button">Button</button>
+  </div>
+
+  <hr>
+
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">@</span>
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+  </div>
+
+  <form>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </form>
+
+<hr>
+  <div class="col-auto">
+    <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+  </div>
+  <div class="col-auto">
+    <span id="passwordHelpInline" class="form-text">
+      Must be 8-20 characters long.
+    </span>
+  </div>
+<hr>
+
+
+
+Default checkbox
+Checked checkbox
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Default checkbox
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+    <label class="form-check-label" for="flexCheckChecked">
+      Checked checkbox
+    </label>
+  </div>
+
+  <hr>
+
+
+
+  <!-- Default radio
+Default checked radio -->
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+    <label class="form-check-label" for="flexRadioDefault1">
+      Default radio
+    </label>
+  </div>
+
+
+
+  <hr>
+  <!-- Disabled radio
+  Disabled checked radio -->
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
+    <label class="form-check-label" for="flexRadioDisabled">
+      Disabled radio
+      
+    </label>
+  </div>
+
+
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" checked disabled>
+    <label class="form-check-label" for="flexRadioCheckedDisabled">
+      Disabled checked radio
+    </label>
+  </div>
+
+  <!-- Default switch checkbox input
+Checked switch checkbox input
+Disabled switch checkbox input
+Disabled checked switch checkbox input -->
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+  </div>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+    <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+  </div>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" disabled>
+    <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
+  </div>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled>
+    <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
+  </div>
+<hr>
+
+  <!--Inline
+Group checkboxes or radios on the same horizontal row by adding .form-check-inline to any .form-check.  -->
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">1</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+    <label class="form-check-label" for="inlineCheckbox2">2</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+    <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+  </div>
+<hr>
+
+  <!--card  -->
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col">
+  <div class="card card-header  text-center" style="width: 18rem;"> Featured
+    <img src="https://images.unsplash.com/photo-1645517455143-b8039ce13f7f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+<div class="col">
+    <div class="card" style="width: 18rem;">
+      <img src="https://images.unsplash.com/photo-1645517455143-b8039ce13f7f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+<hr>
+<!-- Text wrapping and overflow -->
+<div class="badge bg-primary text-wrap" style="width: 6rem;">
+    This text should wrap.
+  </div>
+
+  <div class="text-nowrap bd-highlight" style="width: 8rem;">
+    This text should overflow the parent.
+  </div>
+
+  <hr>
+  <p class="text-lowercase">Lowercased text.</p>
+<p class="text-uppercase">Uppercased text.</p>
+<p class="text-capitalize">CapiTaliZed text.</p>
+
+<hr>
+<p class="fs-1">.fs-1 text</p>
+<p class="fs-2">.fs-2 text</p>
+<p class="fs-3">.fs-3 text</p>
+<p class="fs-4">.fs-4 text</p>
+<p class="fs-5">.fs-5 text</p>
+<p class="fs-6">.fs-6 text</p>
+
+<p class="fw-bold">Bold text.</p>
+<p class="fw-bolder">Bolder weight text (relative to the parent element).</p>
+<p class="fw-normal">Normal weight text.</p>
+<p class="fw-light">Light weight text.</p>
+<p class="fw-lighter">Lighter weight text (relative to the parent element).</p>
+<p class="fst-italic">Italic text.</p>
+<p class="fst-normal">Text with normal font style</p>
+<hr>
+<p class="lh-1">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
+<p class="lh-sm">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
+<p class="lh-base">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
+<p class="lh-lg">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
+
+<!-- Reset a text or link’s color with .text-reset, so that it inherits the color from its parent. -->
+<!--  -->
+<p class="text-muted">
+    Muted text with a <a href="#" class="text-reset">reset link</a>.
+  </p>
+
+
+  <!-- Notation
+Spacing utilities that apply to all breakpoints, from xs to xxl, have no breakpoint abbreviation in them. This is because those classes are applied from min-width: 0 and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+The classes are named using the format {property}{sides}-{size} for xs and {property}{sides}-{breakpoint}-{size} for sm, md, lg, xl, and xxl.
+
+Where property is one of:
+
+m - for classes that set margin
+p - for classes that set padding
+Where sides is one of:
+
+t - for classes that set margin-top or padding-top
+b - for classes that set margin-bottom or padding-bottom
+s - (start) for classes that set margin-left or padding-left in LTR, margin-right or padding-right in RTL
+e - (end) for classes that set margin-right or padding-right in LTR, margin-left or padding-left in RTL
+x - for classes that set both *-left and *-right
+y - for classes that set both *-top and *-bottom
+blank - for classes that set a margin or padding on all 4 sides of the element
+Where size is one of:
+
+0 - for classes that eliminate the margin or padding by setting it to 0
+1 - (by default) for classes that set the margin or padding to $spacer * .25
+2 - (by default) for classes that set the margin or padding to $spacer * .5
+3 - (by default) for classes that set the margin or padding to $spacer
+4 - (by default) for classes that set the margin or padding to $spacer * 1.5
+5 - (by default) for classes that set the margin or padding to $spacer * 3
+auto - for classes that set the margin to auto -->
+<div class="mx-auto" style="width: 200px;">
+    Centered element
+  </div>
+</body>
+</html>

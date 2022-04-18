@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>McDonald's</h1>
+    <select name="food" id="food" >
+        <option value="burger🍔">burger</option>
+        <option value="pizza🍕">pizza</option>
+        <option value="coffee☕">coffee</option>
+    </select>
+
+    <button onclick="order()">order</button>
+</body>
+</html>
+<script>
+    //  function order(){
+    //      let status="open";
+    //      let order=document.getElementById("food").value;
+    //      let food_promise=new Promise(function(resolve,reject){
+    //          setTimeout(function(){
+    //          if(status=="open"){
+    //              resolve(`${order} aa gya... le kha le`)
+    //          }
+    //          else{
+    //              reject("baad me aana abi nhi hai ye🍕🍔☕")
+    //          }
+    //         },1000)
+    //      })
+    //      food_promise.then(function(res){
+    //          console.log(res)
+    //      })
+    //      food_promise.catch(function(err){
+    //          console.log("👊",err)
+    //      })
+
+    //  }
+
+
+
+     //async await
+
+     async function order(){
+         try{
+             let status="open";
+             let order=document.getElementById("food").value;
+             let food_promise=new Promise(function(resolve,reject){
+             setTimeout(function(){
+             if(status=="open")
+             {
+                 resolve(`${order} aa gya... le kha le`)
+             }
+             else
+             {
+                 reject("baad me aana abi nhi hai ye🍕🍔☕")
+             }
+            },1000)
+            })
+            let res= await food_promise;
+            console.log(res)
+            }
+      catch(err){
+     console.log(err)
+     }
+
+    }
+
+</script>

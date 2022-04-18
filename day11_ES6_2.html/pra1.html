@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //preclass practice
+    ///////class
+
+    class person{        //no need to invoke person because it is class
+     constructor(a,b) {
+         this.name=a;
+         this.sport=b;
+
+    }
+    }
+
+    let per1= new person("pablo","polo")
+    console.log("per",per1)
+
+
+
+    //********************************
+
+    class person2{        //no need to invoke person because it is class
+     constructor(a,b) {
+         this.name=a;
+         this.sport=b;
+
+    }
+    
+    showname(){          
+     console.log(this.name)
+    }
+    }
+
+    let per2= new person2("pablo","polo")
+    
+    console.log("per2",per2)
+    per2.showname()
+
+
+    //*********************************
+    //inheritance in ES6 classes
+
+    class person3{        //no need to invoke person because it is class
+     constructor(a,b) {
+         this.name=a;
+         this.sport=b;
+
+    }
+    }
+
+    //here you can invoke person3(as person in above ex) and  pass value  but student1 also you need to pass all values 
+    class student extends person3{
+        constructor(y,x,c,d)
+        {
+            super(y,x)           //super:  work as inheritance;taking parent property
+            this.age=c;
+            this.weight=d;
+
+        }
+
+    }
+
+    let student1= new student("pablo","polo",24,"70kg")   //passing all values...parent property also which i want from super
+    console.log("student1",student1)
+    console.log("person3",person3)
+
+</script>

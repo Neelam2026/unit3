@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pic{
+  
+  width: 100%;
+  height: 350px;
+  
+}
+*{
+  font-family: sans-serif;
+}
+
+#wel{
+  width: 100%;
+  height: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(12, 11, 11);
+  color: white;text-align: center;
+ font-size: 170%;
+ padding: 2%;
+}
+
+#set{
+  background-color: rgb(124, 198, 233);
+  height: 400px;
+  color:rgb(42, 38, 58);
+  padding: 1%;
+  margin: 2%;
+  border: 1px solid rgb(104, 102, 102);
+  width: 20%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.container{
+  margin: 5%;
+  font-size: 110%;
+  font-weight: 550;
+}
+h1{
+  color:rgb(41, 29, 32);
+}
+input{
+  height: 20px;
+  width: 20px;
+margin-left: 5%; 
+border-radius: 5px;
+
+
+}
+#order{
+  width:80% ;
+  margin-left: 2.2%;
+  margin-top: 5%;
+  height:30px ;
+  background-color:red ;
+  font-weight: 600;
+}
+
+#dis{
+  display: flex;
+}
+#pic1{
+ 
+  width: 70%;
+display: grid;
+grid-template-columns: repeat(4 ,1fr);
+gap: 2%;
+margin-top: 2%;
+}
+#pic2{
+  height: 200px;
+  width: 90%;
+}
+    </style>
+</head>
+<body>
+    <div id="wel">Welcome To McDonald's</div>
+    <div id="slideshow">
+        <img src="https://www.mcdonalds.com/content/dam/sites/usa/nfl/publication/1PUB_Deals_MenuHack_1168x520.jpg" alt="" id="pic">
+    </div>
+
+    <div id="dis">
+    <div id="set">
+    <h1>Select Order</h1>
+    <div class="container" >Veg-Burger
+    <input type="checkbox" id="c1" class="pl" value=1>
+    <span class="checkmark" id="checkbox"></span>
+    </div>
+    <div class="container">Coca-cola
+    <input type="checkbox" id="c2" class="pl" value=2>
+    <span class="checkmark"></span>
+    </div>
+    <div class="container">Pizza
+    <input type="checkbox" id="c3" class="pl" value=3>
+    <span class="checkmark"></span>
+    </div>
+    <div class="container">French fries
+    <input type="checkbox" id="c4" class="pl" value=4>
+    <span class="checkmark"></span>
+    </div>
+    <div class="container">Ice-cream
+    <input type="checkbox" id="c5" class="pl" value=5>
+    <span class="checkmark"></span>
+    </div>   
+    <div class="container">Milkshake
+    <input type="checkbox" id="c6" class="pl" value=6>
+    <span class="checkmark"></span></div>
+    <button onclick="order()" id="order">Place Order</button>
+    </div>
+    <div id="pic1"></div></div>
+   
+</body>
+</html>
+<script>
+    var imgarr=JSON.parse(localStorage.getItem("Slideimg"));
+
+var store=document.getElementById("pic");
+var i=0;
+setInterval(function(){
+
+    if(i==imgarr.length){
+        i=0;
+    }
+    store.src=imgarr[i];
+    i++;
+
+},1000)
+
+var foodarr=JSON.parse(localStorage.getItem("food"));
+
+var a= document.getElementById("pic1");
+async function order(){
+   //let status="open" ;
+   try{
+   let cb1=document.querySelector("#c1");
+   let cb2=document.querySelector("#c2");
+   let cb3=document.querySelector("#c3");
+   let cb4=document.querySelector("#c4");
+   let cb5=document.querySelector("#c5");
+   let cb6=document.querySelector("#c6");
+
+   let food_promise=new Promise(function(resolve,reject){
+   setTimeout(function(){
+
+    document.getElementById("pic1").innerHTML=""
+    if (cb1.checked == true){
+        i1=document.createElement("img")
+        i1.setAttribute("id","pic2")
+        i1.setAttribute("src","https://media.farandwide.com/ec/db/ecdb5e26bab947daaf67cbf9c8a928f8.jpg");
+        a.append(i1)
+        resolve(`Order no. ${Math.round(Math.random()*100)} Please collect Your Order `)
+    } 
+    if (cb2.checked == true){
+        i1=document.createElement("img")
+        i1.setAttribute("id","pic2")
+        i1.setAttribute("src","https://www.mcdonalds.com/content/dam/usa/nfl/nutrition/items/regular/desktop/t-mcdonalds-Coca-Cola-Classic-Small.jpg");
+        a.append(i1)
+        resolve(`Order no. ${Math.round(Math.random()*100)} Please collect Your Order `)
+    }
+    if (cb3.checked == true){
+        i1=document.createElement("img")
+        i1.setAttribute("id","pic2")
+        i1.setAttribute("src","https://im1.dineout.co.in/images/uploads/restaurant/sharpen/4/q/x/p49-1493902576590b24f0cacb9.jpg?tr=tr:n-large");
+        a.append(i1)
+        resolve(`Order no. ${Math.round(Math.random()*100)} Please collect Your Order `)
+    } 
+    if (cb4.checked == true){
+        i1=document.createElement("img")
+        i1.setAttribute("id","pic2")
+        i1.setAttribute("src","https://acclaimmag.com/wp-content/uploads/2014/07/FriesCova.jpg");
+        a.append(i1)
+        resolve(`Order no. ${Math.round(Math.random()*100)} Please collect Your Order `)
+    }
+    if (cb5.checked == true){
+        i1=document.createElement("img")
+        i1.setAttribute("id","pic2")
+        i1.setAttribute("src","https://img.etimg.com/thumb/msid-84939728,width-1200,height-900,imgsize-381352,resizemode-8,quality-100/magazines/panache/from-the-us-russia-to-india-an-ice-cream-bowl-has-a-long-political-history.jpg");
+        a.append(i1)
+        resolve(`Order no. ${Math.round(Math.random()*100)} Please collect Your Order `)
+    } 
+    if (cb6.checked == true){
+        i1=document.createElement("img")
+        i1.setAttribute("id","pic2")
+        i1.setAttribute("src","https://bakingmischief.com/wp-content/uploads/2022/03/coffee-milkshake-square.jpg");
+        a.append(i1)
+        resolve(`Order no. ${Math.round(Math.random()*100)} Please collect Your Order `)
+    }
+    else if(cb1.checked == false && cb2.checked == false && cb3.checked == false && cb4.checked == false && cb5.checked == false && cb6.checked == false ){
+        reject(`Please select order`)
+    }
+    
+    },1000)
+   })
+
+   let res= await food_promise;
+   alert(res)
+   
+   }
+catch(err){
+alert(err)
+}
+
+   
+}
+
+
+
+
+
+
+
+
+
+
+var slideshowimg=[
+ "https://www.mcdonalds.com/content/dam/sites/usa/nfl/carousel/Carousel_Desktop_HomePage_Groupshotv3_1168x520.jpg",
+ "https://www.mcdonalds.com/content/dam/sites/usa/nfl/publication/1pub_Freechickenmcnugget_MenuHack_1168x520.jpg",
+ "https://www.mcdonalds.com/content/dam/sites/usa/nfl/publication/1pub_McDeliveryGeneric_MenuHack_1168x520.jpg",
+ "https://www.mcdonalds.com/content/dam/sites/usa/nfl/publication/1Pub_CSS_MenuHack_1168x520.jpg",
+"https://www.mcdonalds.com/content/dam/sites/usa/nfl/publication/1PUB_Deals_MenuHack_1168x520.jpg"
+];
+
+localStorage.setItem("Slideimg",JSON.stringify(slideshowimg))
+
+</script>

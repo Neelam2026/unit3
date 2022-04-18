@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function multiplication(a,b){
+	console.log(a*b);
+	}
+	
+	var multiby2 = multiplication.bind(this,2);
+	
+	//Now multiby2(b) is equal to multiplication(2,b);
+    multiby2(3); //6
+	multiby2(4); //8
+	//////////////////////////////////////////////
+
+
+    function addition(c,d)
+    {
+        console.log(c+d)
+    }
+
+    var add=addition.bind(this,10);
+    add(5);
+    add(9);
+</script>

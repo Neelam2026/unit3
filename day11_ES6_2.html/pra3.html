@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //function programming  : priority given to funtion
+
+    //{1}object programming: priority given to object
+    let food={
+        ingredients:["paneer","butter"],
+        cookfood:function(){
+            console.log(`cooking food `)
+        }
+    }
+ food.cookfood()
+
+  //{2}function programming  : priority given to funtion
+function ingredients1(a,b)
+{
+    //console.log([a,b])
+    return [a,b]
+}
+  function cookfood1(){
+     let ing=ingredients1("paneer","butter")
+     return `cooking food ${ing}`
+  }
+ console.log(cookfood1())
+
+
+
+ //{3} let arr=new myarray()
+ class stack{
+     constructor(){
+         this.arr=[];
+         this.length=0;
+     }
+ 
+
+        push1(v){              //method  not function
+            this.arr.push(v);
+            this.length++;
+
+        }
+        pop1(){              //method
+            this.arr.pop();
+            this.length--;
+
+        }
+
+    }  
+
+
+    let s1=new stack();
+    s1.push1(3) ;
+    
+    s1.push1(9) ;
+    s1.push1(15) ;
+    console.log(s1)
+    s1.pop1()  
+    console.log(s1)  
+
+</script>

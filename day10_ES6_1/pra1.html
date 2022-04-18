@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Youtube clone</title>
+    <script src="https://kit.fontawesome.com/e3ddd9c631.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
+    <style>
+      #search_result{
+       display:grid;
+       grid-template-columns: repeat(4,1fr);
+       gap:20px;
+      }
+      #search_result>div{
+          display: flex;
+          border:1px solid rgb(238, 238, 245);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 10px;
+      }
+      #navbar{
+          width: 100%;
+          height: 80px;
+          border: 1px solid red;
+          background-color: rgb(0,0,0);
+          color: aliceblue;
+      }
+      i{
+          color: rgb(189, 39, 39);
+          background-color: rgb(97, 197, 197);
+        
+      }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <h1>You Tube</h1>
+        <i class="fa-solid fa-house"></i>
+        <i class="fas fa-shopping-cart"></i>
+        <input id="search_term" type="text" placeholder="Search video">
+    <button onclick="searchVideo()">Search</button></div>
+    <div id="search_result"></div>
+</body>
+</html>
+<script>
+    //site: developers.googole.com/youtube/v3
+    //https://youtube.googleapis.com/youtube/v3/search?key=[YOUR_API_KEY]
+    //https://youtube.googleapis.com/youtube/v3/search?key=[YOUR_API_KEY]
+
+    //api_key=AIzaSyDJVWbSRk_S-qvxJbAsUJXu80KMdUCQ6Do
+
+    let Api_key='AIzaSyDJVWbSRk_S-qvxJbAsUJXu80KMdUCQ6Do';
+    let searchResult=document.getElementById("search_result")
+
+    const searchVideo=async()=>{
+       try
+       { let user_input=document.getElementById("search_term").value;
+        let response= await fetch(`https://www.googleapis.com/youtube/v3/search?key=${Api_key}&q=${user_input}&type=video&maxResults=25`)
+        let data= await response.json()
+        console.log("data:",data)
+        let videolist=data.items;
+        console.log("data:",videolist)
+        displaydata(videolist)
+       }
+       catch(err){
+           console.log("error:",err)
+       }
+
+
+}
+//<iframe width="560" height="315" src="https://www.youtube.com/embed/ydRbVZzr7Jo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+const displaydata=(videoArray)=>{
+    //console.log("list",videoArray)
+    searchResult.innerHTML="";
+    videoArray.forEach((video)=>{
+      const {
+          id:{videoId},
+      }=video;
+     
+
+    let videoCard=document.createElement("div");
+
+    let Iframe=document.createElement("iframe"); //use for selected video which will play in full screen
+    Iframe.src=`https://www.youtube.com/embed/${videoId}`;
+    Iframe.setAttribute("allowfullscreen",true);
+    Iframe.width="100%";
+    videoCard.append(Iframe);
+    searchResult.append(videoCard)
+});
+}
+
+
+
+
+
+
+</script>

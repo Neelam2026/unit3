@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-image: url("https://cache.desktopnexus.com/thumbseg/2404/2404558-bigthumbnail.jpg");
+            background-size: cover;
+        }
+        .mapouter{
+            position:relative;
+            text-align:right;
+            height:500px;
+            width:600px;
+        }
+    
+        .gmap_canvas {
+            overflow:hidden;
+            background:none!important;
+            height:410px;
+            width:95%;
+            margin-left: 40%;
+            margin-top: 10%;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            border-radius: 10px;
+        }
+            
+
+            #dis1{
+                display: flex;
+            }
+            #dis2{
+                display: grid;
+                grid-template-columns: repeat(7,1fr);
+                gap: 2%;
+                width: 90%;
+                margin-left: 5%;
+            }
+            #div1{
+                border: 2px solid rgb(158, 155, 155);
+                width: 90%;
+                border-radius: 10px;
+                text-align: center;
+                padding: 1%;
+                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            }
+            #container{
+                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+                text-decoration: underline;
+                width: 100%;
+                height: 80px;
+                color: rgb(30, 44, 107);
+                text-align: center;
+                font-size: 330%;
+                font-weight: 600;
+            }
+            #info{
+              
+                width:26%;
+                height: 400px;
+                margin-left: 5.5%;
+                margin-top: 4%;
+               padding-left: 5%;
+               padding-top: 1%;
+               font-size: 120%;
+               font-weight: 600;
+               color: rgb(2, 2, 46);
+               border-radius: 10px;
+                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            }
+            #dis4{
+                display: flex;
+               
+            }
+            #dis5{
+                display: flex;
+               
+                width: 60%;
+                margin: 3%;
+            }
+            button{
+                width: 40%;
+                height: 53px;
+                background-color: rgb(2, 95, 107);
+                color:white;
+                border-radius: 10px;
+                border: 0;
+                font-size: 100%;
+                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            }
+            #cityname{
+                border-radius: 10px; 
+                width: 30%; 
+                height: 100px;
+                margin-left: 5%;
+                margin-top: 3%;
+                font-size: 160%;
+                font-weight: 550;
+                color: rgb(58, 57, 57);
+               
+                padding-left: 3%;
+                padding-top: 1%;
+                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            }
+            #city{
+                width: 70%;
+                margin-left: 20%;
+                border-radius: 10px;
+                border: 0;
+                height: 50px;
+                padding-left: 3%;
+                font-weight: 600;
+                font-size: large;
+                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            }
+
+            #forecast{
+                width: 100%;
+                margin: 2%;
+                height: 50px;
+                
+                text-align: center;
+                color: rgb(49, 3, 3);
+                font-size:200% ;
+                font-weight: 600;
+                padding: 1%;
+                text-decoration: underline;
+                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            }
+           #p3,#p4{
+                
+                padding-top: 2%;
+                font-size: 70%;
+                font-weight: 600;
+            }
+            #p1{
+                
+                padding-top: 2%;
+                font-size: 90%;
+                font-weight: 600;
+                
+            }
+        </style>
+</head>
+<body>
+    <div id="container">Weather Report</div>
+    <hr>
+   <div id="dis4"><span id="cityname"></span>
+    <div id="dis5"><input type="text" id="city" placeholder="Enter city name">
+    <button onclick="getweatherdata()">Search weather details</button></div> </div> 
+    
+    <div id="dis1">
+        <div id="info"></div>
+        <div class="mapouter">
+            <div class="gmap_canvas">
+                <iframe id="gmap-canvas" width="600" height="500" id="gmap_canvas" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+             </div>
+        </div>
+    </div>
+
+    <div id="forecast"></div>
+
+    <div id="dis2"></div>
+
+
+    <!--  -->
+
+    
+
+
+</body>
+</html>
+<script>
+   let key="0700c7cc82a5e828a51de3d58772ba0a"          
+  
+   
+   async function getweatherdata(){
+
+        try{
+           // document.getElementById("container").innerHTML="" ;
+            let city=document.getElementById("city").value;
+            let res  = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=7&appid=${key}&units=metric`);
+            let data= await res.json();
+            showweather(data)
+            forecaste(data)
+           console.log("data:",data)
+
+        }
+        catch(err){
+           console.log("err:",err)
+        }
+    }
+    
+    function  showweather(data){
+       // document.getElementById("container").innerHTML="" ;
+        document.getElementById("info").innerHTML="" ;
+        document.getElementById("gmap-canvas").innerHTML="" ;
+        document.getElementById("cityname").innerHTML="" ;
+        let info=document.getElementById("info") ;
+        let iframe=document.getElementById("gmap-canvas");
+        
+        let ctnm=document.getElementById("cityname");
+        ctnm.textContent=`Weather Report: ${data.city.name}`
+        let p8=document.createElement("div")
+        p8.textContent=data.list[0].dt_txt
+        ctnm.append(p8)
+        let temp=document.createElement("p") ;
+        temp.innerText=`Temp: ${data.list[0].main.temp}°C`;
+        let mxt=document.createElement("p") ;
+        mxt.innerText=`Max Temp: ${data.list[0].main.temp_max}°C`;
+        let mnt=document.createElement("p") ;
+        mnt.innerText=`Min Temp: ${data.list[0].main.temp_min}°C`;
+         let humidity=document.createElement("p") ;
+         humidity.innerText=`Humidity: ${data.list[0].main.humidity}`;
+        let press=document.createElement("p") ;
+        press.innerText=`Pressure: ${data.list[0].main.pressure} P`;
+        let snr=document.createElement("p") ;
+        snr.innerText=`Sun Rise: ${data.city.sunrise}`
+        let sns=document.createElement("p") ;
+        sns.innerText=`Sun Set: ${data.city.sunset}`
+        let wind=document.createElement("p") ;
+        wind.innerText=`Wind Speed: ${data.list[0].wind.speed}Km/hr`
+       info.append(temp,mxt,mnt,humidity,press,snr,sns,wind)
+       iframe.src=`https://maps.google.com/maps?q=${data.city.name}&t=&z=13&ie=UTF8&iwloc=&output=embed` ;
+
+
+      
+    }
+ 
+    let day=new Date().getDay()
+
+    function forecaste(data){
+        document.getElementById("dis2").innerHTML=""
+        document.getElementById("forecast").textContent="Forecast of a city for next 7 days"
+        data.list.map(function(data,index){
+           
+        let div1=document.createElement("div")
+      
+        div1.setAttribute("id","div1")
+       
+        let p1=document.createElement("div")
+        p1.setAttribute("id","p1")
+        let hr1=document.createElement("hr")
+        let hr2=document.createElement("hr")
+        let p2=document.createElement("img")
+        p2.src=`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+        let p3=document.createElement("div")
+        p3.setAttribute("id","p3")
+        p3.textContent=`Max Temp: ${data.main.temp_max}°C`
+        let p4=document.createElement("div")
+        p4.setAttribute("id","p4")
+        p4.innerText=`Min Temp: ${data.main.temp_min}°C`;
+        div1.append(p1,hr1,p2,hr2,p3,p4);
+        document.getElementById("dis2").append(div1)
+        
+        days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+            p1.textContent=days[(day++)%7]            
+       })
+
+    }
+    
+      
+
+      
+      
+
+</script>

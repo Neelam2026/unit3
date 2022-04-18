@@ -1,0 +1,44 @@
+* {
+    font-family: sans-serif;
+  }
+  #navbar {
+    display: flex;
+    background-color: rgb(3, 37, 65);
+    width: 100%;
+  }
+  #navbar > p {
+    color: white;
+    margin-left: 25px;
+    border: 1 px solid red;
+  }
+  #searchbar {
+    margin-top: 6px;
+    margin-left: 150px;
+    border-radius: 15px;
+    height: 30px;
+    width: 30%;
+  }
+#button{
+      width: 5%;
+      height:30px ;
+      margin: 4px;
+      margin-top: .6%;
+     border-radius:10px ;
+     background-color: red;
+     border: 1px solid gray;
+    
+}
+#img {
+    width: 12%;
+    padding-left: 2%;
+  }
+
+  #show_name{
+    color: blanchedalmond;
+    padding-top: 1%;
+    
+  }
+   #show_name:hover{
+    font-size: large;
+    color: aquamarine;
+  }

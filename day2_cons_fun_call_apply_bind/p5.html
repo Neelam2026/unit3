@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+        
+         #j {
+             border : 1px solid red;
+             display: block;
+             width:300px;
+         }
+         p{
+             border : 1px dotted black;
+         }
+     </style>
+ </head>
+ <body>
+     <div id="box"> </div>
+ </body>
+ </html>
+
+ <script>
+var arr=JSON.parse(localStorage.getItem("names"))||[];
+console.log(arr);
+arr.map(function(elem){
+var div = document.createElement("div")
+    div.setAttribute("id","j");
+
+div.textContent="student details::>>"
+var name = document.createElement("p")
+    name.textContent=`student name :: ${elem.name} `
+    var no = document.createElement("p")
+    no.textContent=  `student number :: ${elem.number} `
+    var city = document.createElement("p")
+    city.textContent= `student city :: ${elem.city} `
+    div.append(name,no,city)
+   document.querySelector("#box").append(div);
+
+})
+
+ </script>

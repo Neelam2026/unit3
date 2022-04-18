@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+   const Amar={
+       profession:"Singer",
+       city:"Goa",
+       skillborrow(){
+           console.log(this. profession)
+       } 
+   }
+
+   const Akbar={
+       profession:"Chef",
+       city:"Mumbai",
+       skillborrow(){
+           console.log(this. profession)
+       } 
+   }
+
+   const Anthony={
+       profession:"Magician",
+       city: "Kashmir",
+       skillborrow(){
+           console.log(this. profession)
+       } 
+   }
+
+   let amar1 = Amar.skillborrow.bind(Akbar);
+   
+   let amar2 = Amar.skillborrow.bind(Anthony);
+   amar1()
+   amar2()
+
+   let akbar1 = Akbar.skillborrow.bind(Amar);
+   let akbar2 = Akbar.skillborrow.bind(Anthony);
+   akbar1()
+   akbar2()
+
+   let anthony1 = Amar.skillborrow.bind(Amar);
+   let anthony2 = Amar.skillborrow.bind(Akbar);
+   anthony1()
+   anthony2()
+
+ 
+
+
+
+</script>

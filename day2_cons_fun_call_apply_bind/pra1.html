@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //js constructor
+    var per={
+        name:"raj",
+        myname:function(){
+            console.log(per.name)
+            console.log(this)
+        }
+    }
+    per.myname()
+    //console.log(per)
+
+
+
+    //intro to this
+  function player(n,m){
+   this.name=n;
+   this.city=m;
+  }
+var obj=new player("neelam","satna")   //here i have created an fresh object from scratch by using this new
+console.log(obj)
+console.log(obj.name)
+console.log(obj.city)
+console.log(this)
+
+</script>

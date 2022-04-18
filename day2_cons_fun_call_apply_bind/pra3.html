@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+//     function  team(n,m,p){
+//         this.name=n;
+//         this.grp=m;
+//         this.game=p
+//         console.log(this)
+//     }
+
+//    var ob1=new team("neelam",2,"chess")
+//    console.log(ob1)//same as inside
+//    var ob2=new team("poonam",8,"ggg")
+//    var ob=new team("nidhi",40,"jk")
+//    var o4=new team("ritik",6,"hideseek")
+
+
+
+
+
+
+
+
+//normal fun
+   function Product(n, a) {
+	    var product={}
+	    product.name=n   
+        product.price = a
+	    return product
+	}
+	
+	var p1 = new Product('xhoes','999')
+	var p2 = new Product('shirt','1299')
+    console.log(p1)
+    console.log(p2)
+	//we need a keyword that can replace OWNER object //what is that keyword?
+	
+	//create PRODUCTS using a normal function but using this keyword
+	
+	function Product(n,a){
+	    this.name=n	
+        this.price=a
+	}
+	var product1 = new Product('FOOTBALL','799')
+    console.log(product1)
+</script>

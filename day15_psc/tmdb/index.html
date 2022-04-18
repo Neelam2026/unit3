@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <style>
+      /*  */
+
+      #show_data {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2%;
+        width: 90%;
+
+        margin-top: 3%;
+        margin-left: 5%;
+      }
+      #img1_treding {
+        height: 250px;
+        width: 90%;
+        padding: 4%;
+      }
+      #div1 {
+        width: 85%;
+        border-radius: 10px;
+        background-color: black;
+        margin-left: 7%;
+      }
+      #div2,
+      #div3,
+      #div4 {
+        color: rgb(185, 172, 172);
+        text-align: center;
+        padding: 0.5%;
+      }
+      #div4 {
+        padding-bottom: 7%;
+      }
+      #div1:hover {
+        background-color: rgb(71, 69, 69);
+        width: 90%;
+      }
+
+      #div2:hover,
+      #div3:hover,
+      #div4:hover {
+        color: rgb(85, 3, 3);
+      }
+
+      #movie_result {
+        width: 100%;
+        height: 300px;
+
+        background-image: url("https://free4kwallpapers.com/uploads/wallpaper/bladerunner--movie-scene-wallpaper-1024x768-wallpaper.jpg");
+        padding-top: 4%;
+        background-size: cover;
+        padding-bottom: 4%;
+      }
+      #navbar2 {
+        width: 100%;
+        height: 60px;
+        color: white;
+        background-color: rgb(3, 3, 46);
+        text-align: center;
+        padding: 2%;
+        font-size: 230%;
+      }
+      #div6 {
+        display: flex;
+        width: 80%;
+        height: 300px;
+        border: 5px solid rgb(43, 6, 6);
+        background-color: rgb(11, 5, 59);
+        margin-left: 10%;
+        color: white;
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+          rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+          rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+          rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+          rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+          rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      }
+      #div6:hover {
+        border: 5px solid rgb(110, 108, 108);
+      }
+
+      #img2_treding {
+        height: 280px;
+        padding: 4%;
+      }
+      #div10 {
+        padding: 4%;
+      }
+      #div7,
+      #div8,
+      #div9,
+      #div12,
+      #div11 {
+        margin-bottom: 2%;
+      }
+      #div7:hover,
+      #div8:hover,
+      #div9:hover,
+      #div12:hover,
+      #div11:hover {
+        color: rgb(219, 24, 24);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar"></div>
+
+    <!--  -->
+    <div id="movie_result"></div>
+    <div id="navbar2">Popular Movies</div>
+    <div id="show_data"></div>
+  </body>
+</html>
+<script type="module" src="./scripts/index.js">
+  
+</script>

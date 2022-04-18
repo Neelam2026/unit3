@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+      div{
+         
+          height: 300px;
+      }
+      #container{
+          display: flex;
+          height: 600px;
+        
+      }
+      #input-section{
+        flex:1; 
+        margin: 5%; 
+        background-color: rgb(42, 65, 4);
+       
+        
+      }
+      #output-section{
+        flex:1;  
+        margin: 5%; 
+        border: 1px solid rgb(24, 20, 20);
+        background-color: rgb(244, 248, 237);
+      }
+      #input-text{
+          width: 97.7%;
+         height:80% ;
+         padding: 1%;
+          background-color: rgb(244, 248, 237);
+      }
+      #traslate-btn{
+          padding: 2%;
+          margin: 1%;
+          background-color: red;
+      }
+      h1{
+        width: 100%;
+        height: 70px;
+        padding-top: 1%;
+        background-color: rgb(5, 53, 36);
+        color: white;
+        text-align: center;
+        text-decoration: underline;
+      }
+      #select_language, #select_language_op{
+        height: 40px;
+        background-color: rgb(9, 238, 169);
+      }
+  </style>
+
+  <body>
+    <h1>Language Translator</h1>
+    <div id="container">
+      <div id="input-section">
+         
+        <!--Create button that will run translate text function, give id "translate-btn"-->
+        <button id="traslate-btn" onclick=" translateText()">Translate </button>
+        <select id="select_language">
+          <option  value="">Select Language</option>
+            <option  value="en">English</option>
+            <option  value="fr">French</option>
+            <option  value="ar">Arabic</option>
+            <option  value="de">German</option>
+            <option  value="hi">Hindi</option>
+            <option  value="es">Spanish</option>
+            <option  value="ru">Russian</option>
+            <option  value="it">Italian</option>
+            <option  value="ja">Japanese</option>
+            <option  value="auto">Auto Detect (Experimental)</option>
+
+        </select>
+        <!--Create input that will accept text to be translated, give id "input-text"-->
+        <textarea id="input-text"></textarea>
+      </div>
+      <div id="output-section">
+        <select id="select_language_op">
+          <option  value="">Select Language</option>
+            <option  value="en">English</option>
+            <option  value="fr">French</option>
+            <option  value="ar">Arabic</option>
+            <option  value="de">German</option>
+            <option  value="hi">Hindi</option>
+            <option  value="es">Spanish</option>
+            <option  value="ru">Russian</option>
+            <option  value="it">Italian</option>
+            <option  value="ja">Japanese</option>
+            <option  value="zh">Chinese</option>
+
+        </select>
+        <p id="translated-text">
+          <!--Show translated text here-->
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+
+    async function translateText(){
+    try{ 
+         let input=document.getElementById("input-text").value;
+         let input_language=document.getElementById("select_language").value;
+         let output_language=document.getElementById("select_language_op").value
+         let res= await fetch("https://libretranslate.de/translate", {
+
+	        method: "POST",
+          body:JSON.stringify({
+          q:input,
+          source:`${ input_language}`,
+          target:`${ output_language}`,  //use select tag
+          format:'text'
+
+      }),
+      headers:{
+         // accept:"application/json",
+          "Content-type":"application/json",
+      },
+
+    })
+    let data=await res.json()
+    document.getElementById("translated-text").innerText=data.translatedText;
+    console.log("data:" ,data)
+    }
+    
+    catch(err){
+        console.log("err:" ,err)
+    }
+}
+</script>

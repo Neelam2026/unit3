@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+let a2 = new myArray("r","s","b")
+
+
+function myArray(){
+
+   Object.defineProperty(this, "length", {
+         writable: true,
+         enumerable: false,
+});
+
+   for(let i=0; i<arguments.length;i++){
+       
+       this[i]=arguments[i]
+
+       this.length= arguments.length
+       
+
+   }
+
+
+}
+
+myArray.prototype.chalja = function (x) {
+
+let index = this.length;
+this[index]=x;
+this.length++;
+};
+
+
+myArray.prototype.hello = function () {
+var arrr=[];
+    for(let i=this.length-1;i>=0;i--){
+       arrr.push(this[i]);
+       
+   }
+
+    return arrr;
+};
+
+myArray.prototype.firstele = function () {
+
+   var first= this[0];
+
+    return first;
+};
+
+
+
+console.log(Object.values(a2))
+a2.chalja('total');
+console.log(a2.hello())
+console.log(a2.firstele())
+console.log(Object.values(a2))
+
+</script>

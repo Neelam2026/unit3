@@ -1,0 +1,96 @@
+
+#navbar{
+    width:100%;
+    display: flex;
+    /* justify-content: end; */
+    /* border:1px solid red; */
+    margin:auto;
+    border-radius:5px;
+    background-color: aqua;
+    height: 60px;
+   
+}
+#RHS{
+    /* border:1px solid red; */
+     display: flex;
+     justify-content: space-around;
+     width:25%;
+     color:white;
+}
+#slideshow{
+    width:90%;
+    /* border:1px solid red; */
+    margin:auto;
+    margin-top: 1px;
+    box-shadow: rgba(173, 180, 177, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+
+}
+#picture{
+    width:100%;
+    height: 300px;
+}
+#movies{
+    display: grid;
+    width:90%;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,170px);
+    /* gap:5%; */
+    margin:auto;
+    row-gap: 4%;
+    column-gap: 15%;
+    margin-top: 5%;
+
+
+
+}
+#poster{
+    width:100%;
+}
+#flex{
+    /* width:100%; */
+    /* height: 90%; */
+    display: flex;
+    /* border:1px solid red; */
+    box-shadow: rgba(173, 180, 177, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+
+}
+#div1{
+    width:45%;
+    /* border:1px solid red; */
+   overflow: hidden;
+}
+#div2{
+    width:54%;
+   /* border:1px solid red; */
+   padding-left: 8px;
+
+}
+#namer{
+    font-weight: bolder;
+}
+#imdb,#rlsdate{
+    /* border:1px solid red; */
+    width:100%;
+    height: 20px;
+
+               }
+#rate{
+    padding: .5%; 
+    background-color: rgb(43, 35, 35);
+    border-radius: 5px;
+    margin-top: 4%;
+    margin-left: 85%;
+    color: white;   
+    }               
+
+    #logged{
+        color:orangered;
+        
+    }
+    #dd{
+       color:red;
+        margin-left:15px;
+        margin-right: 700px;
+    }

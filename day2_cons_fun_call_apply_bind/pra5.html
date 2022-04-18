@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const kitchen = {
+	
+	 name:'kitchen',
+	 purpose:'cook',
+     cookFood()          //cookFood:function()  
+        {
+        console.log(`Serving ${this.order} in 2 mins` )//here accessing things of bedroom in kitchen by using call()
+        console.log(`I want ${this.purpose} ` )  // here this representing bedroom
+        console.log(`I am in ${this.name} ` )
+        }
+	
+	}
+	
+	
+	const bedroom=
+    {
+	name:'bedroom',
+	purpose:'sleep',
+	order:'magiee'
+	
+	}
+	
+    kitchen.cookFood.call(bedroom) //knha call (kise)
+	
+</script>

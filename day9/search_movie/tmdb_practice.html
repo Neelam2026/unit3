@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: sans-serif;
+           
+        }
+         #navbar{
+           display: flex;
+           background-color: rgb(3,37,65);
+           width:100%;
+        
+       }
+       #navbar>p{
+           color:white;
+           margin-left: 25px;
+           border:1 px solid red;
+
+       }
+       #searchbar{
+           margin-top: 6px;
+           margin-left: 150px;
+           border-radius: 15px;
+           height: 30px;;
+           width:40%
+       }
+       #img{
+           width:12%;
+           padding-left: 2%;
+       }
+        
+         #show_data{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 2%;
+            width:90%;
+            
+            margin-top: 3%;
+            margin-left: 5%;
+          
+            }
+        #img1_treding{
+            height: 250px;
+            width: 90%;
+            padding: 4%;
+            
+        }
+        #div1{
+            width: 85%;
+            border-radius: 10px;
+            background-color:black;
+            margin-left: 7%;
+          
+        }
+        #div2,#div3,#div4{
+            color :rgb(185, 172, 172);
+            text-align: center;
+            padding: .5%;
+        }
+        #div4{
+           padding-bottom: 7%;
+        }
+        #div1:hover{
+        
+         background-color: rgb(71, 69, 69);
+         width: 90%;
+          
+        }
+           
+        #div2:hover,#div3:hover,#div4:hover{
+            color :rgb(85, 3, 3);
+           
+           
+        }
+
+        #movie_result{
+         width: 100%;
+         height: 300px;
+        
+         background-image: url("https://free4kwallpapers.com/uploads/wallpaper/bladerunner--movie-scene-wallpaper-1024x768-wallpaper.jpg");
+         padding-top: 4%;
+         background-size: cover;
+         padding-bottom: 4%;
+
+        }
+        #navbar2{
+            width: 100%;
+            height: 60px;
+            color:white ;
+            background-color: rgb(3, 3, 46);
+            text-align: center;
+            padding: 2%;
+            font-size: 230%;
+        }
+        #div6{
+            display: flex;
+            width: 80%;
+            height: 300px;
+            border: 5px solid rgb(43, 6, 6);
+            background-color: rgb(11, 5, 59);
+            margin-left: 10%;
+            color:white ;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        }
+        #div6:hover{
+            border: 5px solid rgb(110, 108, 108);
+          
+        }
+
+        #img2_treding{
+            height:280px ;
+            padding: 4%;
+        }
+        #div10{
+            padding: 4%;
+            
+        }
+        #div7,#div8,#div9,#div12,#div11{
+            margin-bottom:2% ;
+        }
+        #div7:hover,#div8:hover,#div9:hover,#div12:hover,#div11:hover{
+           color: rgb(219, 24, 24);
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <img id="img" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="">
+        <p>Movies</p>
+        <p>TV Shows</p>
+        <p>People</p>
+        <p>More</p>
+        <input id="searchbar" type="text" placeholder="Popular movies.....">
+       
+        <p><button onclick="window.location.href='omdbapi.html'"  id="a2">Back>></button></p>
+    </div>
+    <div id="movie_result"></div>
+    <div id="navbar2">Popular Movies</div>
+    <div id="show_data"></div>
+</body>
+</html>
+<script>
+    //e0bd4a62c57d290c876c083e915f73c0
+    //let url1=`https://api.themoviedb.org/3/movie/550?api_key=e0bd4a62c57d290c876c083e915f73c0&language=en-US&append_to_response=images&include_image_language=en,null`
+    let url='https://api.themoviedb.org/3/movie/popular/?api_key=e0bd4a62c57d290c876c083e915f73c0&append_to_response=images';
+    
+
+
+    async function getpopular_movies(){
+        try{
+            let res=await fetch(url);
+        let data = await res.json();
+        console.log(data)
+        append_data(data)
+        }
+      catch(err)
+      {
+          console.log(err)
+      } 
+    }
+    
+    
+
+    getpopular_movies()
+    let show_data=document.getElementById("show_data");
+       function append_data(data){
+        data.results.map(function(data){
+        console.log(data)   
+        let div1 =document.createElement("div"); 
+        div1.id="div1"
+        let img1_treding =document.createElement("img");
+        img1_treding.id="img1_treding"
+        img1_treding.src=`https://image.tmdb.org/t/p/w500${data.poster_path}`
+        let div2=document.createElement("div");
+        div2.id="div2"
+        div2.textContent=data.title;
+        let div3=document.createElement("div");
+        div3.id="div3";
+        div3.textContent=data.release_date
+        let div4=document.createElement("div");
+        div4.id="div4"
+        div4.textContent=`Rating: ${data.vote_average}⭐⭐⭐⭐⭐`
+        let div5=document.createElement("div");
+        div5.id="div5"
+        div5.append(div2,div3,div4)
+        div1.append(img1_treding,div5)
+        show_data.append(div1)  
+
+        div1.addEventListener("click" ,function(){
+            show_movie_result(data)
+        })
+
+       })
+       }
+
+
+       function show_movie_result(data){
+        document.getElementById("movie_result").innerHTML=""
+        let div6 =document.createElement("div"); 
+        div6.id="div6"
+        let img2_treding =document.createElement("img");
+        img2_treding.id="img2_treding"
+        img2_treding.src=`https://image.tmdb.org/t/p/w500${data.poster_path}`
+        let div7=document.createElement("div");
+        div7.id="div7"
+        div7.textContent=`Title: ${data.title}`;
+        let div8=document.createElement("div");
+        div8.id="div8";
+        div8.textContent=`Release_date: ${data.release_date}`
+        let div9=document.createElement("div");
+        div9.id="div9"
+        div9.textContent=`Rating: ${data.vote_average}⭐⭐⭐⭐⭐`
+        let div11=document.createElement("div");
+        div11.id="div11"
+        div11.textContent=`Over View: ${data.overview}`;
+        let div12=document.createElement("div");
+        div12.id="div12"
+        div12.textContent=`Popularity: ${data.popularity}`;
+        let div10=document.createElement("div");
+        div10.id="div10"
+        div10.append(div7,div8,div9,div12,div11)
+        let div13=document.createElement("div");
+        div13.append(img2_treding)
+        div6.append(div13,div10)
+        document.getElementById("movie_result").append(div6)  
+       }
+</script>

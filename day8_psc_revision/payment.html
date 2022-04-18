@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style></style>
+    <title>Payment Page</title>
+  </head>
+  <body>
+    <label for="cardNumber">Card Number</label>
+    <input
+      type="text"
+      id="cardNumber"
+      name="cardNumber"
+      placeholder="Card Number"
+    />
+    <br />
+    <br />
+    <label for="dateOfExpiry">Date Of Expiry</label>
+    <input
+      type="date"
+      id="dateOfExpiry"
+      name="dateOfExpiry"
+      placeholder="Date Of Expiry"
+    />
+    <br />
+    <br />
+    <label for="cvv">CVV</label>
+    <input type="text" id="cvv" placeholder="CVV" />
+    <br />
+    <br />
+    <button onclick="createOrder()">Make Payment</button>
+    <br />
+    <br />
+    <script>
+      function createOrder() {
+        let cardNumber = document.getElementById("cardNumber").value;
+        let dateOfExpiry = document.getElementById("dateOfExpiry").value;
+        let cvv = document.getElementById("cvv").value;
+        console.log(cardNumber, dateOfExpiry, cvv);
+        if (cardNumber && dateOfExpiry && cvv) {
+          setTimeout(function () {
+            alert("order has been created successfully");
+          }, 3000);
+        }
+      }
+    </script>
+  </body>
+</html>

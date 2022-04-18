@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="styles/login.css">
+
+        
+    </head>
+
+    <body>
+        <div id="navbar"><p id="dd">Moviesadda</p>
+            <div id="RHS">
+             <p onclick="window.location.href='index.html'">Home</p>
+             <p id="logged" onclick="window.location.href='login.html'">Login</p>
+             <p onclick="window.location.href='signup.html'">Signup</p>
+         </div>
+            </div>
+        <div id="login-form">
+
+            <form>
+                <h1>Login</h1>
+                <input type="text" placeholder="Enter your Name" id="login-username">
+                <br>
+                <input type="password" placeholder="Enter your Password" id="login-password">
+                <br>
+                
+            </form>
+            <button id="submit" onclick="Login()">Login</button>
+           
+        </div>
+    </body>
+
+</html>
+<script src="scripts/login.js"></script>

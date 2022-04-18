@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    
+
+//array constructor     
+function myarray(){
+
+    Object.defineProperty(this,"length",{
+     writable:true,
+    enumerable:false,
+})
+
+    for(i=0;i<arguments.length;i++)
+    {
+        this[i]=arguments[i]
+        this.length=arguments.length
+        
+    }
+} 
+let a1= new myarray(1,2,7,8,9)      
+console.log(Object.values(a1))
+
+
+//push
+myarray.prototype.pushhhh=function(x){
+    let index=this.length;
+    this[index]=x;
+    this.length++;
+}
+a1.pushhhh(15)
+console.log(Object.values(a1))
+
+
+
+//reversing
+myarray.prototype.reverse=function(a){
+    let n=a.length;
+    for(i=n-1;i>=0;i--)
+   {
+    this[n-i-1]=a[i] 
+   }
+}
+ let revArr=new a1.reverse((a1))
+ console.log(Object.values(revArr))
+ 
+
+ //first_element
+ myarray.prototype.first_ele=function(b){
+     this.first=b[0]
+}
+let first=new a1.first_ele((revArr))
+console.log(Object.values(first))
+
+
+</script>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #debounce_show{
+            height: 300px;
+            color: rgb(229, 240, 240);
+            width:35%;
+            padding-left: 6%;
+            overflow: auto;
+            margin: 2px;
+           
+            
+        }
+        #img{
+            width: 250px;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4 , 1fr);
+        }
+        /* #deb_div{
+            height: 100px;
+        } */
+        #deb_img{
+            height: 70px;
+        }
+
+        #search_show{
+            border: 7px solid red;
+        }
+    </style>
+</head>
+<body>
+    <input  id="inp2" oninput="debounce(main,2000)">
+    <div id="debounce_show" ></div>
+    <div id="search_show"></div>
+    <div id="container" > </div>
+   
+</body>
+</html>
+<script>
+    //
+    let timerid;
+    let debounce=(func,delay)=>{
+        func()
+        if(timerid)
+        {
+            clearTimeout(timerid)
+        }
+        timerid=setTimeout(function() {
+            func()
+        },delay)
+    }
+   //
+    let main=async()=>{
+        let data=await getdata()
+        if(data===undefined){
+            return false
+        }
+        append_data(data)
+    }
+
+    //
+
+//let url=`https://www.themealdb.com/api/json/v1/1/search.php?s=${dish_name}`;
+
+    async function getdata()
+{
+    try
+    {
+        let dish_name=document.getElementById("inp2").value;
+        let res= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${dish_name}`);
+        let data=await res.json();
+        // console.log("da1",data)
+        return data;
+    }
+    catch(err)
+    {
+       console.log("error",err)
+      
+    }
+    
+
+}
+// let container=document.getElementById("container")
+// let debounce_show=document.getElementById("debounce_show")
+function append_data(data,parent)
+{   
+    document.getElementById("container").innerHTML=""
+    document.getElementById("debounce_show").innerHTML=""
+    console.log("da2",data)
+    data.meals.map((el)=>{
+
+        let debounce_div=document.createElement("div"); 
+        debounce_div.id="deb_div"
+        let debounce_img=document.createElement("img")
+        debounce_img.id="deb_img"
+        debounce_img.src=el.strMealThumb;
+        let debounce_p=document.createElement("p")
+        debounce_p.innerText=el.strMeal;
+        let hr=document.createElement("hr")
+        debounce_div.append( debounce_img,debounce_p,hr);
+        debounce_div.addEventListener("click" , function(){
+            search_data(el)
+            console.log("bbbbb",el)
+        })
+        document.getElementById("debounce_show").append( debounce_div)
+
+        let div=document.createElement("div")
+        let p=document.createElement("p")
+        let img=document.createElement("img")
+        img.id="img"
+        p.innerText=el.strMeal;
+        img.src=el.strMealThumb;
+        div.append(img,p)
+        div.addEventListener("click" , function(){
+            search_data(el)
+            
+        })
+        document.getElementById("container").append(div)
+
+
+    })
+
+  
+ 
+}
+
+function search_data(data)
+    {
+        document.getElementById("search_show").innerHTML=""  
+        let div=document.createElement("div")
+        let p=document.createElement("p")
+        let img=document.createElement("img")
+        img.id="img"
+        p.innerText=data.strMeal;
+        img.src=data.strMealThumb;
+        div.append(img,p)
+        document.getElementById("search_show").append(div)
+    }
+
+
+
+
+</script>

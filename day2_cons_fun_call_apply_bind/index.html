@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+        text-align: center;
+      }
+      #container{
+        border: 1px solid rgb(153, 147, 147);
+        width: 30%;
+        padding: 2%;
+        background-color: rgb(182, 228, 18);
+        margin-left: 35%;
+        margin-top: 4%;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+      }
+      #name,#city,#mobile{
+     padding: 2%;
+     margin:5%;
+     width: 60%;
+     background-color: rgb(241, 232, 233);
+     
+      }
+      #submit{
+    background-color: red;
+    width: 20%;
+    padding: 1%;
+    margin: 13% ;
+      }
+    </style>
+</head>
+<body>
+    <h1>Fill Student Details </h1>
+    <hr>
+    <div id="container">
+    <form >
+      <span>Name:</span>
+      <input id="name" type="text" placeholder="enter full name">
+      <br>
+      <span>Mobile:</span>
+      <input id="mobile" type="number" placeholder="enter mobile number">
+      <br>
+      <span>City:</span>
+      <input id="city" type="text" placeholder="enter city ">
+      <br>
+      <input id="submit" type="submit"value="Submit">
+      </form>
+    </div>
+</body>
+</html>
+<script>
+ 
+
+ document.querySelector("form").addEventListener("submit" ,details);
+ var dataArr=JSON.parse(localStorage.getItem("data")) || [];
+
+ function details(event){
+   event.preventDefault();
+   var name= document.querySelector("#name").value;
+   var mobile=document.querySelector("#mobile").value;
+   var city=document.querySelector("#city").value;
+
+  dataobj= new student(name,mobile,city);
+  dataArr.push(dataobj);
+  localStorage.setItem("data",JSON.stringify(dataArr))
+
+ }
+ function student(a,b,c){
+   this.Name=a;
+   this.Mobile=b;
+   this.City=c;
+
+ }
+
+
+</script>
